@@ -1,0 +1,8 @@
+{
+	debug
+	auto_https off
+}
+:8888 {
+	root *  ../
+	file_server
+}
