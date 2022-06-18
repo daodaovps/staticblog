@@ -1,5 +1,6 @@
-package cn.dd.staticblog.util;
+package cn.dd.staticblog.services;
 
+import cn.dd.staticblog.vo.BookInfo;
 import org.commonmark.Extension;
 import org.commonmark.ext.heading.anchor.HeadingAnchorExtension;
 import org.commonmark.node.*;
@@ -12,6 +13,7 @@ import org.nutz.lang.Files;
 import org.nutz.lang.segment.CharSegment;
 import org.nutz.lang.segment.Segment;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.Set;
 
@@ -29,12 +31,24 @@ public class MarkdownToHtml {
         HtmlRenderer renderer = HtmlRenderer.builder().extensions(EXTENSIONS).build();
         String html_body_content = renderer.render(document);
         String side_nav = get_sider(html_body_content);
-        //        System.out.println(html);
+
+        //  目录  数据   beging
+        String bookpath = new File(file_markdown).getParent();
+        File[] fs = Files.lsFile(bookpath, "bookinfo");
+        System.out.println(fs);
+        if (fs.length != 1) {
+            System.out.println("error , not found bookinfo.md");
+            return;
+        }
+        BookInfo bookInfo = ServiceMenu.md_to_bookinfo(html_body_content);
+        bookInfo.toHTML(new File(file_markdown).getName());
+        //  目录  数据   end
+
 
         // 临时写入到一个特定的 html 文件  , 方便调试
 
-        String target_file = "D:\\work_nutz\\static-website-blog\\pages\\3\\da5678e09bad49f189ed14596066597f.html";
-        String template_file = "D:\\work_nutz\\static-website-blog\\pages\\3\\template.html";
+        String target_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\6\\d2ec19786dd84cddb0176b841075e302.html";
+        String template_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\6\\template.html";
         String template_txt = Files.read(template_file);
 
         Segment seg = new CharSegment(template_txt);
@@ -43,8 +57,6 @@ public class MarkdownToHtml {
 
         System.out.println(seg.toString());
         Files.write(target_file, seg.toString());
-
-        //
 
     }
 
