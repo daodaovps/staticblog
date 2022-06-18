@@ -40,8 +40,8 @@ public class MarkdownToHtml {
             System.out.println("error , not found bookinfo.md");
             return;
         }
-        BookInfo bookInfo = ServiceMenu.md_to_bookinfo(html_body_content);
-        bookInfo.toHTML(new File(file_markdown).getName());
+        BookInfo bookInfo = ServiceMenu.md_to_bookinfo(fs[0].getAbsolutePath());
+        String  bookinfo_html=bookInfo.toHTML(new File(file_markdown).getName());
         //  目录  数据   end
 
 
@@ -54,6 +54,7 @@ public class MarkdownToHtml {
         Segment seg = new CharSegment(template_txt);
         seg.set("body_content", html_body_content);
         seg.set("side_nav", side_nav);
+        seg.set("bookinfo", bookinfo_html);
 
         System.out.println(seg.toString());
         Files.write(target_file, seg.toString());
