@@ -1,5 +1,6 @@
 package cn.dd.staticblog.services.tohtml_page_item;
 
+import cn.dd.staticblog.util.CommonUtil;
 import cn.dd.staticblog.vo.BookInfo;
 import org.commonmark.Extension;
 import org.commonmark.ext.heading.anchor.HeadingAnchorExtension;
@@ -12,6 +13,7 @@ import org.jsoup.select.Elements;
 import org.nutz.lang.Files;
 import org.nutz.lang.segment.CharSegment;
 import org.nutz.lang.segment.Segment;
+import org.nutz.lang.util.NutMap;
 
 import java.io.File;
 import java.util.Collections;
@@ -20,10 +22,10 @@ import java.util.Set;
 public class Markdown_to_html_demo {
 
     public static void main(String[] args) {
-        String file_markdown = "D:\\work_nutz\\website--all-md\\books\\book1\\page1.md";
+
+        String file_markdown = "D:\\work_nutz\\staticblog\\doc\\typora-sample\\books\\book1\\page1.md";
 
         String markdown_txt = Files.read(file_markdown);
-
         Set<Extension> EXTENSIONS = Collections.singleton(HeadingAnchorExtension.create());
 
         Parser parser = Parser.builder().build();
@@ -46,7 +48,6 @@ public class Markdown_to_html_demo {
 
 
         // 临时写入到一个特定的 html 文件  , 方便调试
-
         String target_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\6\\d2ec19786dd84cddb0176b841075e302.html";
         String template_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\6\\template.html";
         String template_txt = Files.read(template_file);
@@ -58,6 +59,7 @@ public class Markdown_to_html_demo {
 
         System.out.println(seg.toString());
         Files.write(target_file, seg.toString());
+
 
     }
 
