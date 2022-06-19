@@ -1,5 +1,7 @@
 package cn.dd.staticblog.vo;
 
+import org.nutz.lang.Strings;
+
 import java.util.List;
 
 public class BookInfo {
@@ -65,7 +67,7 @@ public class BookInfo {
 
                 String clss = "";
                 String txt = subs.get(j);
-                if (current_title.equals(txt)) {
+                if (!Strings.isBlank(current_title) && current_title.equals(txt)) {
                     clss = " class=\"current_s\" ";
                 }
                 strbuider.append("<dd><a " + clss + " href=\"/pages/4/x.html\">" + (i + 1) + "." + (j + 1) + "  " + subs.get(j) + "</a></dd>");

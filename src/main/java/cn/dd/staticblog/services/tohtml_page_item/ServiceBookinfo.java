@@ -17,6 +17,7 @@ public class ServiceBookinfo {
         document.accept(visitor);
         System.out.println(Json.toJson(visitor.bookInfo));
         return visitor.bookInfo;
+
     }
 
     public static void main(String[] args) {

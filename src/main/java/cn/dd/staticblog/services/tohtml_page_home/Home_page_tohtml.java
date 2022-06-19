@@ -41,9 +41,10 @@ public class Home_page_tohtml {
         List<Pageinfo> pageinfo_list = new ArrayList<>();
         for (int i = 0; i < pages_all.size(); i++) {
             File f = pages_all.get(i);
-            if (f.getName().contains("bookinfo.md")) {
+            if (f.getName().contains("bookinfo")) {
                 pages_all.remove(f);
                 i--;
+                continue;
             }
             Pageinfo pageinfo = ServicePageinfo.get_pageinfo(f.getAbsolutePath());
             pageinfo_list.add(pageinfo);
