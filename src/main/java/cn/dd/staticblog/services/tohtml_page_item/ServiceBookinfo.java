@@ -1,18 +1,12 @@
-package cn.dd.staticblog.services;
+package cn.dd.staticblog.services.tohtml_page_item;
 
 import cn.dd.staticblog.vo.BookInfo;
-import org.commonmark.Extension;
-import org.commonmark.ext.heading.anchor.HeadingAnchorExtension;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
-import org.commonmark.renderer.html.HtmlRenderer;
 import org.nutz.json.Json;
 import org.nutz.lang.Files;
 
-import java.util.Collections;
-import java.util.Set;
-
-public class ServiceMenu {
+public class ServiceBookinfo {
 
     public static BookInfo md_to_bookinfo(String bookinfo_md_path) {
 
@@ -27,11 +21,11 @@ public class ServiceMenu {
 
     public static void main(String[] args) {
 
-        ServiceMenu serviceMenu = new ServiceMenu();
+        ServiceBookinfo serviceMenu = new ServiceBookinfo();
 
         String path = "D:\\work_nutz\\website--all-md\\books\\book1\\AAA--bookinfo.md";
-        serviceMenu.md_to_bookinfo(path);
-
+        BookInfo bookInfo = serviceMenu.md_to_bookinfo(path);
+        System.out.println(Json.toJson(bookInfo));
 
     }
 }

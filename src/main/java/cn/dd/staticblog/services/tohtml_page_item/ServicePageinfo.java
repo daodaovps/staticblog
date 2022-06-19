@@ -1,15 +1,19 @@
-package cn.dd.staticblog.services;
+package cn.dd.staticblog.services.tohtml_page_item;
 
 import cn.dd.staticblog.vo.BookInfo;
+import cn.dd.staticblog.vo.Pageinfo;
 import org.commonmark.Extension;
 import org.commonmark.ext.heading.anchor.HeadingAnchorExtension;
-import org.commonmark.node.*;
+import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.nutz.json.Json;
 import org.nutz.lang.Files;
+import org.nutz.lang.Lang;
+import org.nutz.lang.Times;
 import org.nutz.lang.segment.CharSegment;
 import org.nutz.lang.segment.Segment;
 
@@ -17,10 +21,10 @@ import java.io.File;
 import java.util.Collections;
 import java.util.Set;
 
-public class MarkdownToHtml {
+public class ServicePageinfo {
 
     public static void main(String[] args) {
-        String file_markdown = "D:\\work_nutz\\website--all-md\\books\\book1\\page1.md";
+        String file_markdown = "D:\\work_nutz\\staticblog\\doc\\typora-sample\\books\\book1\\page1.md";
 
         String markdown_txt = Files.read(file_markdown);
 
@@ -40,24 +44,35 @@ public class MarkdownToHtml {
             System.out.println("error , not found bookinfo.md");
             return;
         }
-        BookInfo bookInfo = ServiceMenu.md_to_bookinfo(fs[0].getAbsolutePath());
-        String  bookinfo_html=bookInfo.toHTML(new File(file_markdown).getName());
+        String page_filename_as_title = new File(file_markdown).getName().replaceFirst("[.][^.]+$", "");;
+
+        BookInfo bookInfo = ServiceBookinfo.md_to_bookinfo(fs[0].getAbsolutePath());
+        String bookinfo_html = bookInfo.toHTML(page_filename_as_title);
         //  目录  数据   end
 
+        Pageinfo pageinfo = new Pageinfo();
+        pageinfo.setTitle(page_filename_as_title);
+        pageinfo.setContent_html(html_body_content);
+        pageinfo.setNav_side_html(side_nav);
+        pageinfo.setBookinfo(bookInfo);
 
         // 临时写入到一个特定的 html 文件  , 方便调试
-
         String target_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\6\\d2ec19786dd84cddb0176b841075e302.html";
         String template_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\6\\template.html";
         String template_txt = Files.read(template_file);
-
         Segment seg = new CharSegment(template_txt);
+        seg.set("page_title", page_filename_as_title);
         seg.set("body_content", html_body_content);
         seg.set("side_nav", side_nav);
         seg.set("bookinfo", bookinfo_html);
-
         System.out.println(seg.toString());
         Files.write(target_file, seg.toString());
+        // 写入文件end
+        File file_page = new File(target_file);
+        pageinfo.setFile_md5(Lang.md5(file_page));
+        pageinfo.setLast_modify_date(Times.D(file_page.lastModified()));
+
+        System.out.println(Json.toJson(pageinfo));
 
     }
 
@@ -80,6 +95,6 @@ public class MarkdownToHtml {
             strb.append(item_html);
         }
         return strb.toString();
-
     }
+
 }
