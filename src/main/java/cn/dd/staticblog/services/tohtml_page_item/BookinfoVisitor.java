@@ -7,10 +7,11 @@ import org.commonmark.node.Heading;
 import org.commonmark.node.Text;
 import org.nutz.lang.Lang;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-class BookSectionsVisitor extends AbstractVisitor {
+class BookinfoVisitor extends AbstractVisitor {
 
     BookInfo bookInfo = new BookInfo();
 
@@ -19,6 +20,9 @@ class BookSectionsVisitor extends AbstractVisitor {
         // This is called for all Text nodes. Override other visit methods for other node types.
 
         // Count words (this is just an example, don't actually do it this way for various reasons).
+
+        String bookinfo_md_file = bookInfo.getBookinfo_md_file();
+        String bookinfo_path = new File(bookinfo_md_file).getParent();
 
         String txt = text.getLiteral();
         int level = ((Heading) text.getParent()).getLevel();
@@ -49,8 +53,13 @@ class BookSectionsVisitor extends AbstractVisitor {
             if (Lang.isEmpty(subs)) {
                 subs = new ArrayList<>();
             }
-            subs.add(txt);
+
+            String page_md_file = bookinfo_path + "/" + txt + ".md";
+            if (new File(page_md_file).exists()) {
+                subs.add(txt);
+            }
             last_booksection.setSection_sub(subs);
+
         }
 
         // Descend into children (could be omitted in this case because Text nodes don't have children).

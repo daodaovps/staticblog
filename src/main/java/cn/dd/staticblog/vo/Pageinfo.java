@@ -9,8 +9,10 @@ public class Pageinfo {
     private String content_html;
     private BookInfo bookinfo;
     private Date last_modify_date;
+    private String md_file;
     private String file_md5;
     private String url;
+    private String top_nav;
 
     public String getTitle() {
         return title;
@@ -52,6 +54,14 @@ public class Pageinfo {
         this.last_modify_date = last_modify_date;
     }
 
+    public String getMd_file() {
+        return md_file;
+    }
+
+    public void setMd_file(String md_file) {
+        this.md_file = md_file;
+    }
+
     public String getFile_md5() {
         return file_md5;
     }
@@ -66,5 +76,13 @@ public class Pageinfo {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getTop_nav() {
+        return top_nav;
+    }
+
+    public void setTop_nav(String top_nav) {
+        this.top_nav = top_nav;
     }
 }
