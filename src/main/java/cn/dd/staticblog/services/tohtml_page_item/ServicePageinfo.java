@@ -56,9 +56,12 @@ public class ServicePageinfo {
         pageinfo.setNav_side_html(side_nav);
         pageinfo.setBookinfo(bookInfo);
 
+        String url= Lang.md5(bookInfo.get_top_nav(bookInfo, page_filename_as_title)) + ".html" ;
+        pageinfo.setUrl(url);
+
         // 临时写入到一个特定的 html 文件  , 方便调试
-        String target_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\6\\d2ec19786dd84cddb0176b841075e302.html";
-        String template_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\6\\template.html";
+        String target_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\" +url;
+        String template_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\模板\\template-pageinfo.html";
         String template_txt = Files.read(template_file);
         Segment seg = new CharSegment(template_txt);
         seg.set("page_title", page_filename_as_title);
@@ -73,8 +76,8 @@ public class ServicePageinfo {
         pageinfo.setLast_modify_date(Times.D(file_page.lastModified()));
 
         System.out.println(Json.toJson(pageinfo));
-
     }
+
 
     /**
      * 提取H2 标签,  生成  sider  html

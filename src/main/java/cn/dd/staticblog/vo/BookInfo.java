@@ -76,4 +76,25 @@ public class BookInfo {
         return strbuider.toString();
     }
 
+    public  String get_top_nav(BookInfo bookInfo, String current_title) {
+        StringBuilder strbuider = new StringBuilder();
+        List<BookSection> sections = bookInfo.getSections();
+        for (int i = 0; i < sections.size(); i++) {
+            BookSection section = sections.get(i);
+            List<String> subs = section.getSection_sub();
+            for (int j = 0; j < subs.size(); j++) {
+                String txt = subs.get(j);
+                if (current_title.equals(txt)) {
+                    strbuider.append(bookname +" > ");
+                    strbuider.append("第" + (i + 1) + "章  " + section.getSection()+" > ");
+                    strbuider.append( (i + 1) + "." + (j + 1) + "  " + subs.get(j) );
+                    return strbuider.toString();
+                }
+            }
+        }
+        return strbuider.toString();
+    }
+
+
+
 }

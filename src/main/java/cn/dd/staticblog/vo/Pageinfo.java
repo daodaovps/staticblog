@@ -10,6 +10,7 @@ public class Pageinfo {
     private BookInfo bookinfo;
     private Date last_modify_date;
     private String file_md5;
+    private String url;
 
     public String getTitle() {
         return title;
@@ -57,5 +58,13 @@ public class Pageinfo {
 
     public void setFile_md5(String file_md5) {
         this.file_md5 = file_md5;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
