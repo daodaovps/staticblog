@@ -58,7 +58,7 @@ public class Home_page_tohtml {
             stringBuilder.append("<li class=\"li_index\">\n" +
                     "\n" +
                     "                                <h3>\n" +
-                    "                                    <a class=\"page_title\" target=\"_blank\" href=\"/pages/" + pageinfo.getUrl() + "\">" + pageinfo.getTitle() + "</a>\n" +
+                    "                                    <a class=\"page_title\" target=\"_blank\" href=\"/pages/" + pageinfo.getUrl() + ".html\">" + pageinfo.getTitle() + "</a>\n" +
                     "                                    <a class=\"series\" href=\"javascript:void(0)\" title=\"\" style=\"\">\n" +
                     "                                    Series 1/1</a>\n" +
                     "                                </h3>\n" +
