@@ -24,8 +24,14 @@ import java.util.Set;
 public class ServicePageinfo {
 
     public static void main(String[] args) {
-        String file_markdown = "D:\\work_nutz\\staticblog\\doc\\typora-sample\\books\\book1\\page1.md";
 
+        String file_markdown = "D:\\work_nutz\\staticblog\\doc\\typora-sample\\books\\book1\\page1.md";   //  有bookinfo的情况
+        //        String file_markdown = "D:\\work_nutz\\staticblog\\doc\\typora-sample\\books\\pages\\2022-06-01  shell学习.md";  //  没有bookinfo的情况
+       Pageinfo pageinfo= get_pageinfo(file_markdown);
+        System.out.println(Json.toJson(pageinfo));
+    }
+
+    public static Pageinfo get_pageinfo(String file_markdown) {
         String markdown_txt = Files.read(file_markdown);
 
         Set<Extension> EXTENSIONS = Collections.singleton(HeadingAnchorExtension.create());
@@ -36,27 +42,35 @@ public class ServicePageinfo {
         String html_body_content = renderer.render(document);
         String side_nav = get_sider(html_body_content);
 
+        //  page title
+        String page_filename_as_title = new File(file_markdown).getName().replaceFirst("[.][^.]+$", "");
+
         //  目录  数据   beging
         String bookpath = new File(file_markdown).getParent();
-        File[] fs = Files.lsFile(bookpath, "bookinfo");
-        System.out.println(fs);
-        if (fs.length != 1) {
-            System.out.println("error , not found bookinfo.md");
-            return;
+        File[] fs_bookinfo = Files.lsFile(bookpath, "bookinfo");
+
+        BookInfo bookInfo = null;
+        String bookinfo_html = "";
+        String url = "";
+        if (fs_bookinfo != null && !Lang.isEmpty(fs_bookinfo)) {
+            System.out.println(fs_bookinfo);
+            if (fs_bookinfo.length != 1) {
+                System.out.println("error , not found bookinfo.md");
+            }
+            bookInfo = ServiceBookinfo.md_to_bookinfo(fs_bookinfo[0].getAbsolutePath());
+            bookinfo_html = bookInfo.toHTML(page_filename_as_title);
+            url = Lang.md5(bookInfo.get_top_nav(bookInfo, page_filename_as_title)) + ".html";
+        } else {
+            url = Lang.md5(page_filename_as_title) + ".html";
         }
-        String page_filename_as_title = new File(file_markdown).getName().replaceFirst("[.][^.]+$", "");;
 
-        BookInfo bookInfo = ServiceBookinfo.md_to_bookinfo(fs[0].getAbsolutePath());
-        String bookinfo_html = bookInfo.toHTML(page_filename_as_title);
         //  目录  数据   end
-
         Pageinfo pageinfo = new Pageinfo();
         pageinfo.setTitle(page_filename_as_title);
         pageinfo.setContent_html(html_body_content);
         pageinfo.setNav_side_html(side_nav);
         pageinfo.setBookinfo(bookInfo);
 
-        String url= Lang.md5(bookInfo.get_top_nav(bookInfo, page_filename_as_title)) + ".html" ;
         pageinfo.setUrl(url);
 
         // 临时写入到一个特定的 html 文件  , 方便调试
@@ -76,8 +90,9 @@ public class ServicePageinfo {
         pageinfo.setLast_modify_date(Times.D(file_page.lastModified()));
 
         System.out.println(Json.toJson(pageinfo));
-    }
+        return pageinfo;
 
+    }
 
     /**
      * 提取H2 标签,  生成  sider  html
