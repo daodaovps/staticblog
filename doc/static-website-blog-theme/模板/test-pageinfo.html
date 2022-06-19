@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Keywords" content="HDFS Architecture Guide,d2ec19786dd84cddb0176b841075e302"/>
+    <meta name="Description" content="HDFS Architecture Guide,HDFS Architecture Guide
+"/>
+
+    <link rel="icon" href="/static/img/favicon.ico?v=98">
+    <title>HDFS Architecture Guide - NutzBlog</title>
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/tutorial-page.css?v=98" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.min.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!--  代码高亮 -->
+    <link rel="stylesheet" href="/static/js/highlight/prism-okaidia.css?v=98"/>
+    <script src="/static/js/highlight/prism.js?v=98"></script>
+	
+	<style>
+	
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+	</style>
+
+</head>
+<body class="tutorial-single" data-spy="scroll">
+
+<script>
+    if (top != self) {
+        location.href = "about:blank";
+    }
+</script>
+
+<header class="navbar navbar-static-top bs-docs-nav" style="background: #f8f8f8; padding: 15px 0 15px 0" id="top"
+        role="banner">
+    <div class="container-fluid">
+        <div class=" col-md-8 col-md-offset-2">
+            <div class="navbar-header ">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                        data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a title="NutzBlog" href="./" class="navbar-brand logo"
+                   style="background: url('/images/5b9fcd0ac465457295d6015a48403e2d') no-repeat;">NutzBlog</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav header navbar-nav">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/archive.html">归档</a></li>
+                    <li><a href="/tags.html">标签</a></li>
+                    <li><a href="/me.html">ME</a></li>
+                </ul>
+                <form target="_self" method="get" action="/search"
+                      class="navbar-form navbar-right">
+                    <input value="" id="q" name="q" type="text" class="form-control"
+                           placeholder="Search">
+                </form>
+
+            </nav>
+        </div>
+    </div>
+    </div>
+</header>
+
+
+
+
+
+<div class="container-fluid">
+
+
+    <div class="row">
+
+        <div class="col-md-8  col-md-offset-2  col-xs-12 ">
+            <div class="wrapper layout-wrapper">
+                <div class="section-content content">
+                    <div class="col-cv-bg col-cv-bg-shown"
+                         style="display:block;left: 0px; top: 0px; width: 100%; height: 300px;background-size:cover;  background-image: url(/images/19efb128af404f2a8d38b02a48157fe7) ;">
+                        <div class="col-cv-bg-title">
+                        
+                        </div>
+                    </div>
+
+                    <!--  标题  -->
+                    <h1 class="content-title">HDFS Architecture Guide</h1>
+                    <!--  标签 -->
+                    <span class="meta-section tags">
+                        <span class="meta-label">Tags: </span>
+                                <span class="meta-value">  <a     href="/filter/tag/10/1.html">Hadoop</a></span>
+                    </span>
+
+                    <div class="tutorial-series-container collapsed">
+                        <div class="section-content">
+                            <h2 class="tutorial-series-heading">Tutorial Series</h2>
+
+                            <div class="tutorial-series-toggle">
+                                This tutorial is part 2 of 2 in the series:
+                                <a id="btn_show_series" data-reveal="fast"
+                                   href="javascript:void(0)">HDFS</a>
+                            </div>
+
+                            <div id="tutorial_series_12" class="tutorial-series"
+                                 style="display:none;"
+                                    >
+                                <a id="btn_hide_series" class="icon-close" href="javascript:void(0)"></a>
+
+                                <h3 class="series-title"><a href="#">HDFS</a></h3>
+
+                                <div class="description">
+                                HDFS
+                                </div>
+
+
+                                <ol class="tutorial-series-list">
+                                    <li >
+                                        <h2>
+                                            <a href="/pages/4/8b641cf2d8b24a06ad4419b832315fce.html">HDFS</a>
+                                        </h2>
+
+                                        <div class="feedable-date">2022-06-11</div>
+                                        <div class="meta">
+                                            <div class="points">
+                                                <span class="icon-upvote-heart-small"></span>
+                                                52
+                                            </div>
+                                            <div class="response-count">
+                                                <span class="icon icon-new-comment"></span>
+                                                156
+                                            </div>
+                                            <span class="author">By <a
+                                                    href="javascript:void(0)">刀刀</a></span>
+                                        </div>
+                                        <div class="arrow-left"></div>
+                                    </li>
+                                    <li 
+                                            class="active"
+                                    >
+                                        <h2>
+                                            <a href="/pages/6/d2ec19786dd84cddb0176b841075e302.html">HDFS Architecture Guide</a>
+                                        </h2>
+
+                                        <div class="feedable-date">2022-06-11</div>
+                                        <div class="meta">
+                                            <div class="points">
+                                                <span class="icon-upvote-heart-small"></span>
+                                                52
+                                            </div>
+                                            <div class="response-count">
+                                                <span class="icon icon-new-comment"></span>
+                                                156
+                                            </div>
+                                            <span class="author">By <a
+                                                    href="javascript:void(0)">刀刀</a></span>
+                                        </div>
+                                        <div class="arrow-left"></div>
+                                    </li>
+                                </ol>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="content-body tutorial-content">
+						test content 123 中文
+eng
+                    </div>
+                </div>
+
+                <!--   开始  中间内容foot -->
+                <div class="tutorial-footer">
+
+                    <div class="menu_warp">
+						
+                    </div>
+
+                    <div class="googlead">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- javablog.net -->
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-7848078487754242"
+                             data-ad-slot="9015028010"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <div class="tutorial-footer-details">
+
+                        <!--  用户头像 -->
+                        <div class="section-content tutorial-contributors one">
+                            <div class="tutorial-footer-user">
+                                <a href="javascript:void(0)">
+                                    <img alt="manicas" class="avatar avatar-small" height="80"
+                                         src="/images/0504cbe4452a4ff18c67c04d2e2c986d"
+                                         width="80"></a>
+
+                                <div class="user-info">
+                                    <a href="javascript:void(0)">刀刀</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 三个按钮 -->
+                        <div class="share">
+<div style="margin:0 auto;width:385px;" class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["mshare","qzone","tsina","weixin","youdao","tieba","sqq","copy"],"viewText":"分享到：","viewSize":"24"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>                        </div>
+                    </div>
+                    <div id="comments">
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="6" data-title="HDFS Architecture Guide"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name: "javablog"};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2  hidden-xs hidden-sm">
+
+            <div class="outside_viewport">
+                <div class="table-of-contents  tocify open" style="top:100px">
+                    <ul id="myaffix" id="tocify-header0" class="nav  affix-top" data-spy="affix">
+                    
+                    </ul>
+                </div>
+            </div>
+			
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<footer id="footer">
+<div style="display: none">
+
+null
+
+</div>
+
+<div class="container-fluid" style="color: white">
+    <div class="row">
+        <div class="col-md-8  col-md-offset-2   col-xs-12  ">
+            <div id="column-main" class="footer-column">
+                <div id="copyright">
+                    <div><a href="http://daodaovps.com/" target="_blank">超便宜VPS推介</a></div>
+                    <div><a href="/" target="_self">Copyright © 2016 NutzBlog</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</footer>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/static/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/js/bootstrap.min.js"></script>
+
+<script>
+
+    $(function () {
+        //carousel-inner
+        $(".tutorial-content img").addClass("img-responsive img-rounded");
+
+        $("#btn_show_series").click(function () {
+            $(".tutorial-series").slideToggle();
+        });
+        $("#btn_hide_series").click(function () {
+            $(".tutorial-series").slideUp();
+        });
+
+
+    });
+
+    $('#myaffix ').affix({
+        offset: {
+            top: 280
+            , bottom: function () {
+                return (this.bottom = $('.tutorial-footer').outerHeight(true) + $('#footer').outerHeight(true))
+            }
+        }
+    });
+
+
+    function del(id) {
+
+        if (confirm("确定删除吗?")) {
+            $.get("http://write.javacore.cn:9999/adm/single_mgr/del/?id=" + id + "", function (data) {
+//                alert("删除结果:" + data);
+                window.location.href = "/";
+            });
+        }
+    }
+
+
+</script>
+</body>
+</html>
