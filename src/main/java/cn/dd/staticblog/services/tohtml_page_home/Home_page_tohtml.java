@@ -2,6 +2,7 @@ package cn.dd.staticblog.services.tohtml_page_home;
 
 import cn.dd.staticblog.services.tohtml_page_item.ServicePageinfo;
 import cn.dd.staticblog.util.CommonUtil;
+import cn.dd.staticblog.util.FrontPagerUT;
 import cn.dd.staticblog.vo.Pageinfo;
 import org.nutz.json.Json;
 import org.nutz.lang.Files;
@@ -87,8 +88,20 @@ public class Home_page_tohtml {
                     "                            </li>");
         }
 
-        CommonUtil.update_file(index_page_file_template, index_page_file , NutMap.NEW().setv("indexlist",stringBuilder.toString()));
 
+        int pagesize = 2;
+        int allcount = pageinfo_list.size();
+        int pageno = 1;
+        String pages_html = FrontPagerUT.pages(pagesize, allcount, pageno, "/index/%s.html", 3);
+        String pages_min_html = FrontPagerUT.pages(pagesize, allcount, pageno, "/index/%s.html", 0);
+        
+        CommonUtil.update_file(
+                index_page_file_template,
+                index_page_file,
+                NutMap.NEW().setv("indexlist", stringBuilder.toString())
+                        .setv("pages", pages_html)
+                        .setv("pages_min", pages_min_html)
+        );
 
 
     }
