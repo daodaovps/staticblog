@@ -54,8 +54,13 @@ public class Home_page_tohtml {
         System.out.println(Json.toJson(pageinfo_list));
 
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < pageinfo_list.size(); i++) {
-            Pageinfo pageinfo = pageinfo_list.get(i);
+        int pagesize = 2;
+        int allcount = pageinfo_list.size();
+        int pageno = 0;
+        int last_pageno = (allcount % pagesize) == 0 ? allcount / pagesize : (allcount / pagesize + 1);
+        System.out.println(last_pageno);
+        for (int i = 1; i <= pageinfo_list.size(); i++) {
+            Pageinfo pageinfo = pageinfo_list.get(i - 1);
             stringBuilder.append("<li class=\"li_index\">\n" +
                     "\n" +
                     "                                <h3>\n" +
@@ -86,22 +91,55 @@ public class Home_page_tohtml {
                     "                                </div>\n" +
                     "\n" +
                     "                            </li>");
+
+            //  对每页都要创建文件
+            if (i % pagesize == 0) {
+                pageno = pageno + 1;
+                String pages_html = FrontPagerUT.pages(pagesize, allcount, pageno, "/index_%s.html", 3);
+                String pages_min_html = FrontPagerUT.pages(pagesize, allcount, pageno, "/index_%s.html", 0);
+
+                if (pageno == 1) {
+                    CommonUtil.update_file(
+                            index_page_file_template,
+                            index_page_file,
+                            NutMap.NEW().setv("indexlist", stringBuilder.toString())
+                                    .setv("pages", pages_html)
+                                    .setv("pages_min", pages_min_html)
+                    );
+                }
+
+                String base_path = new File(index_page_file).getParent();
+                CommonUtil.update_file(
+                        index_page_file_template,
+                        base_path + "/index_" + pageno + ".html",
+                        NutMap.NEW().setv("indexlist", stringBuilder.toString())
+                                .setv("pages", pages_html)
+                                .setv("pages_min", pages_min_html)
+                );
+
+                //  每页重置  list
+                stringBuilder = new StringBuilder();
+            }
+
+            // 最后一页数量 小于  pagesize
+            if (allcount % pagesize > 0 && i == pageinfo_list.size()) {
+                String pages_html = FrontPagerUT.pages(pagesize, allcount, last_pageno, "/index_%s.html", 3);
+                String pages_min_html = FrontPagerUT.pages(pagesize, allcount, last_pageno, "/index_%s.html", 0);
+
+                String base_path = new File(index_page_file).getParent();
+                CommonUtil.update_file(
+                        index_page_file_template,
+                        base_path + "/index_" + last_pageno + ".html",
+                        NutMap.NEW().setv("indexlist", stringBuilder.toString())
+                                .setv("pages", pages_html)
+                                .setv("pages_min", pages_min_html)
+                );
+                //  每页重置  list
+                stringBuilder = new StringBuilder();
+            }
         }
 
 
-        int pagesize = 2;
-        int allcount = pageinfo_list.size();
-        int pageno = 1;
-        String pages_html = FrontPagerUT.pages(pagesize, allcount, pageno, "/index/%s.html", 3);
-        String pages_min_html = FrontPagerUT.pages(pagesize, allcount, pageno, "/index/%s.html", 0);
-        
-        CommonUtil.update_file(
-                index_page_file_template,
-                index_page_file,
-                NutMap.NEW().setv("indexlist", stringBuilder.toString())
-                        .setv("pages", pages_html)
-                        .setv("pages_min", pages_min_html)
-        );
 
 
     }
