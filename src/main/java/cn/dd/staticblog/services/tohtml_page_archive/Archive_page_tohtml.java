@@ -56,14 +56,42 @@ public class Archive_page_tohtml {
             }
         }
 
-        //循环每个月 ,  每个月生成一个list page
-        for (String key : month_pageinfo_list.keySet()) {
-            //            System.out.println(key + " ：" + month_pageinfo_list.get(key));
+        List<String> sortedKeys = new ArrayList(month_pageinfo_list.keySet());
+        Collections.sort(sortedKeys);
 
-            String yyyyMM=key;
-            List<Pageinfo> pageinfos = month_pageinfo_list.get(key);
+        //  每年1份 ,   每年里面 list <月,count>
+        List<Map<String, List<NutMap>>> data = new ArrayList<>();
+        for (int i = 0; i < sortedKeys.size(); i++) {
+            String yyyyMM = sortedKeys.get(i);
+            String yyyy = yyyyMM.substring(0, 4);
+            Map<String, List<NutMap>> yyyy_data = fetch_yyyy(data, yyyy);
 
+            List<NutMap> yyyyMM_data = yyyy_data.get(yyyy);
+            if (Lang.isEmpty(yyyyMM_data)) {
+                yyyyMM_data = new ArrayList<>();
+                yyyy_data.put(yyyy,yyyyMM_data);
+            }
+            yyyyMM_data.add(NutMap.NEW().setv(yyyyMM, month_pageinfo_list.get(yyyyMM).size()));
+        }
 
+        // 生成html
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < data.size(); i++) {
+            Map<String, List<NutMap>> yyyy_data = data.get(i);
+            String yyyy = yyyy_data.keySet().stream().findFirst().get();
+            List<NutMap> month_data = yyyy_data.get(yyyy);
+
+            stringBuilder.append("<div class=\"col-md-4\">");
+            stringBuilder.append("<dl>");
+            stringBuilder.append("<dt>"+yyyy+"</dt>");
+            for (int j = 0; j < month_data.size(); j++) {
+                NutMap  item=month_data.get(j);
+                String month=item.keySet().stream().findFirst().get();
+                int count=month_pageinfo_list.get(month).size();
+                stringBuilder.append("<dd><a href=\"/archive/month_"+month+".html\">"+Times.format("yyyy年MM月",Times.parseq("yyyyMM",month))+" ("+count+"篇文章)</a></dd>   ");
+            }
+            stringBuilder.append("</dl>");
+            stringBuilder.append("</div>");
 
         }
 
