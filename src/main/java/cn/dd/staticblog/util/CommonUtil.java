@@ -1,13 +1,19 @@
 package cn.dd.staticblog.util;
 
+import org.commonmark.Extension;
+import org.commonmark.ext.front.matter.YamlFrontMatterExtension;
+import org.commonmark.ext.front.matter.YamlFrontMatterVisitor;
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
 import org.nutz.lang.Files;
+import org.nutz.lang.Lang;
+import org.nutz.lang.Strings;
+import org.nutz.lang.Times;
 import org.nutz.lang.segment.CharSegment;
 import org.nutz.lang.segment.Segment;
 import org.nutz.lang.util.NutMap;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class CommonUtil {
 
@@ -22,6 +28,67 @@ public class CommonUtil {
         k_v.setv("bookinfo", "");
 
         CommonUtil.update_file(template_file, target_file, k_v);
+
+    }
+
+    /**
+     * 现状只有3个字段,
+     * <p>
+     * <p>
+     * create: 2022-06-24
+     * tags: java,spring,shell
+     * draft: true
+     *
+     * @return
+     */
+    public static NutMap find_metadata(String md_page_file) {
+
+        String md_txt_content = Files.read(md_page_file);
+        Set<Extension> EXTENSIONS = Collections.singleton(YamlFrontMatterExtension.create());
+        Parser PARSER = Parser.builder().extensions(EXTENSIONS).build();
+
+        YamlFrontMatterVisitor visitor = new YamlFrontMatterVisitor();
+        Node document = PARSER.parse(md_txt_content);
+        document.accept(visitor);
+
+        Map<String, List<String>> data = visitor.getData();
+
+        NutMap out = new NutMap();
+        if (Lang.isEmpty(data)) {
+            out.setv("create", Times.sD(new Date()));
+            out.setv("tags", new ArrayList<>());
+            out.setv("draft", true);
+            return out;
+        } else {
+
+            if (!Lang.isEmpty(data.get("create"))) {
+                out.setv("create", Strings.trim(data.get("create").get(0)));
+            } else {
+                out.setv("create", Times.sD(new Date()));
+            }
+
+
+            if (!Lang.isEmpty(data.get("tags"))) {
+                String tags = data.get("tags").get(0);
+                if (!Strings.isBlank(tags)) {
+                    String[] arr = tags.split(",");
+                    String[] arr2 = Arrays.stream(arr).map(String::trim).toArray(String[]::new);
+                    out.setv("tags", Lang.array2list(arr2));
+                } else {
+                    out.setv("tags", new ArrayList<>());
+                }
+            } else {
+                out.setv("tags", new ArrayList<>());
+            }
+
+            if (!Lang.isEmpty(data.get("draft"))) {
+                out.setv("draft", Boolean.valueOf(data.get("draft").get(0)));
+            } else {
+                out.setv("draft", true);  // 默认是草稿
+            }
+
+        }
+        return out;
 
     }
 

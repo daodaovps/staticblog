@@ -1,5 +1,6 @@
 package cn.dd.staticblog.services.tohtml_page_item;
 
+import cn.dd.staticblog.util.CommonUtil;
 import cn.dd.staticblog.vo.BookInfo;
 import cn.dd.staticblog.vo.Pageinfo;
 import org.commonmark.Extension;
@@ -16,6 +17,7 @@ import org.nutz.lang.Lang;
 import org.nutz.lang.Times;
 import org.nutz.lang.segment.CharSegment;
 import org.nutz.lang.segment.Segment;
+import org.nutz.lang.util.NutMap;
 
 import java.io.File;
 import java.util.*;
@@ -106,6 +108,13 @@ public class ServicePageinfo {
         pageinfo.setUrl(url);
         pageinfo.setTop_nav(top_nav);
         pageinfo.setMd_file(file_markdown);
+
+        // 设置 metadata
+        NutMap data = CommonUtil.find_metadata(file_markdown);
+        pageinfo.setDraft(data.getBoolean("draft"));
+        pageinfo.setCreate_date(Times.parseq("yyyy-MM-dd", data.getString("create")));
+        pageinfo.setTags(data.getAsList("tags", String.class));
+
 
         // 临时写入到一个特定的 html 文件  , 方便调试
         String target_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\pages\\" + url + ".html";

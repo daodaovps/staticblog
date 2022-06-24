@@ -1,6 +1,7 @@
 package cn.dd.staticblog.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Pageinfo {
 
@@ -13,6 +14,9 @@ public class Pageinfo {
     private String file_md5;
     private String url;
     private String top_nav;
+    private  Date  create_date;
+    private List<String> tags;
+    private boolean draft;
 
     public String getTitle() {
         return title;
@@ -84,5 +88,29 @@ public class Pageinfo {
 
     public void setTop_nav(String top_nav) {
         this.top_nav = top_nav;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public boolean isDraft() {
+        return draft;
+    }
+
+    public void setDraft(boolean draft) {
+        this.draft = draft;
     }
 }

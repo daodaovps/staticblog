@@ -40,6 +40,15 @@
             <version>0.19.0</version>
         </dependency>
 
+        <!--   读取markdown 的 metadata      -->
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark-ext-yaml-front-matter</artifactId>
+            <version>0.19.0</version>
+        </dependency>
+
+
+
         <!--   提取H2 , 为了  sider nav      -->
         <dependency>
             <groupId>org.jsoup</groupId>
