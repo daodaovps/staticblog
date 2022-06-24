@@ -1,10 +1,14 @@
 package cn.dd.staticblog.util;
 
+import cn.dd.staticblog.consts.Consts;
+import cn.dd.staticblog.services.tohtml_page_item.ServicePageinfo;
+import cn.dd.staticblog.vo.Pageinfo;
 import org.commonmark.Extension;
 import org.commonmark.ext.front.matter.YamlFrontMatterExtension;
 import org.commonmark.ext.front.matter.YamlFrontMatterVisitor;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
+import org.nutz.json.Json;
 import org.nutz.lang.Files;
 import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
@@ -13,6 +17,7 @@ import org.nutz.lang.segment.CharSegment;
 import org.nutz.lang.segment.Segment;
 import org.nutz.lang.util.NutMap;
 
+import java.io.File;
 import java.util.*;
 
 public class CommonUtil {
@@ -108,6 +113,41 @@ public class CommonUtil {
             seg.set(k, v);
         }
         Files.write(target_file, seg.toString());
+    }
+
+
+
+    public static List<Pageinfo>  get_all_pageinfo_list()
+    {
+        //   全部 page 生成 html
+        String md_files_home_path = Consts.md_files_home_path;
+        File[] folders = Files.ls(new File(md_files_home_path), ".", Files.LsMode.DIR);
+        System.out.println(Json.toJson(folders));
+
+        List<File> pages_all = new ArrayList<>();
+        for (int i = 0; i < folders.length; i++) {
+            File[] pages = Files.lsFile(folders[i], ".");
+            pages_all.addAll(Lang.array2list(pages));
+        }
+
+        File[] arr_pages_all = Lang.collection2array(pages_all);
+        Arrays.sort(arr_pages_all, Comparator.comparingLong(File::lastModified).reversed());
+        pages_all = Lang.array2list(arr_pages_all);
+
+        // 去掉bookinfo的文档
+        List<Pageinfo> pageinfo_list = new ArrayList<>();
+        for (int i = 0; i < pages_all.size(); i++) {
+            File f = pages_all.get(i);
+            if (f.getName().contains("bookinfo")) {
+                pages_all.remove(f);
+                i--;
+                continue;
+            }
+            Pageinfo pageinfo = ServicePageinfo.get_pageinfo(f.getAbsolutePath());
+            pageinfo_list.add(pageinfo);
+        }
+        return pageinfo_list;
+
     }
 
 }
