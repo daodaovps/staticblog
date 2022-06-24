@@ -116,9 +116,7 @@ public class CommonUtil {
     }
 
 
-
-    public static List<Pageinfo>  get_all_pageinfo_list()
-    {
+    public static List<Pageinfo> get_all_pageinfo_list() {
         //   全部 page 生成 html
         String md_files_home_path = Consts.md_files_home_path;
         File[] folders = Files.ls(new File(md_files_home_path), ".", Files.LsMode.DIR);
@@ -149,5 +147,27 @@ public class CommonUtil {
         return pageinfo_list;
 
     }
+
+
+    public static Map<String, List<Pageinfo>> sortByValue(Map<String, List<Pageinfo>> map) {
+        ArrayList<Map.Entry<String, List<Pageinfo>>> mapList = null;
+
+        //通过ArrayList构造函数把map.entrySet()转换成list
+        mapList = new ArrayList<Map.Entry<String, List<Pageinfo>>>(map.entrySet());
+        //通过比较器实现比较排序
+        Collections.sort(mapList, new Comparator<Map.Entry<String, List<Pageinfo>>>() {
+            public int compare(Map.Entry<String, List<Pageinfo>> map1, Map.Entry<String, List<Pageinfo>> map2) {
+                return map2.getValue().size() - map1.getValue().size();
+            }
+        });
+        Map<String, List<Pageinfo>> newMap = new LinkedHashMap<String, List<Pageinfo>>(); //这里注意使用LinkedHashMap
+        for (Map.Entry<String, List<Pageinfo>> entry : mapList) {
+            newMap.put(entry.getKey(), entry.getValue());
+        }
+
+        map = newMap;
+        return newMap;
+    }
+
 
 }
