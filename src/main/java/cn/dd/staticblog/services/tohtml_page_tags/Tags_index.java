@@ -40,15 +40,15 @@ public class Tags_index {
         }
 
         System.out.println(tag_pagelist);
-        tag_pagelist=CommonUtil.sortByValue(tag_pagelist);
+        tag_pagelist = CommonUtil.sortByValue(tag_pagelist);
         System.out.println(tag_pagelist);
 
         StringBuilder stringBuilder = new StringBuilder();
         tag_pagelist.forEach((key, value) -> {
-            stringBuilder.append("<a href=\"/filter/tag/2/1.html\">" + key + " (" + value.size() + ")</a>");
+            stringBuilder.append("<a href=\"/tags/tag-" + key + ".html\">" + key + " (" + value.size() + ")</a>");
         });
 
-        String  template_file= "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\模板\\template-tags.html";
+        String template_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\模板\\template-tags.html";
         String target_file = "D:\\work_nutz\\staticblog\\doc\\static-website-blog-theme\\tags.html";
         NutMap params = new NutMap();
         params.setv("tags", stringBuilder.toString());
