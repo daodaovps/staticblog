@@ -57,9 +57,12 @@ dd a:hover {
 .meta-value a {
     text-decoration: none;
     border: 1px solid transparent;
-    padding: 5px 8px 5px 5px;
+    
     line-height: 20px;
     display: inline-block;
+	
+	padding:10px;
+	margin:5px;
 }
 
 .meta-value a.tag-img {
