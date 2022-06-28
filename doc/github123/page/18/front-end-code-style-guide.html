@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="author" content="刀刀,daodaovps@qq.com">
+    <link rel="icon" href="/usr/themes/yodu/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/usr/themes/yodu/images/favicon.ico">
+    <!--[if lt IE 9]>
+    <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a
+            href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <title>前端代码风格指南 -  前端代码风格指南 | 刀刀博客</title>
+    <link rel="stylesheet" href="/usr/themes/yodu/duoshuo.css" type="text/css">
+    <link rel="stylesheet" href="/usr/themes/yodu/style.css">
+    <link rel="stylesheet" href="/static/css/w3.css">
+
+    <meta name="description"
+          content="bendc/frontend-guidelines   前端代码风格指南 ,前端代码风格指南,front-end-code-style-guide , 前端代码风格指南, 刀刀的个人博客,专注于分享优秀的开源项目."/>
+    <meta name="keywords"
+          content="前端代码风格指南,front-end-code-style-guide , 前端代码风格指南,   java,daodao,daodaoblog,github,opensource,freecode,开源项目."/>
+
+</head>
+<body id="menu">
+
+<div class="js-search search-form search-form--modal" method="get" role="search">
+    <div class="search-form__inner">
+        <div><p class="micro mb-">输入后按回车搜索 ...</p> <a id="soux" href="https://s.github123.com/search/"><i
+                class="icon-search"></i></a> <input id="keyword" class="text-input" type="text" name="s"
+                                                    autocomplete="off"
+                                                    placeholder="Search" onkeypress="$.getKey();" required="required"/>
+        </div>
+    </div>
+    <div class="search_close" onclick="$.Close()"></div>
+</div>
+
+<sidebar id="sidebar">
+    <div class="tx"><a href="/"><img src="/usr/themes/yodu/images/p1.jpg" alt="刀刀博客"/><span>刀刀博客</span></a></div>
+    <ul class="cd">
+        <li><a href="/" title="主页"> <i class="iconfont icon-quan"></i> <span>主页</span> </a></li>
+        <li><a href="/archives.html" title="归档"> <i class="iconfont icon-openwj"></i> <span>归档</span>
+        </a></li>
+        <li><a href="/tags.html" title="标签"> <i class="iconfont icon-tags"></i> <span>标签</span> </a>
+        </li>
+        <li><a href="/about.html" title="关于"> <i class="iconfont icon-wo"></i> <span>关于</span> </a>
+        </li>
+        <li><a onclick="$.Sousuo()" title="搜索"> <i class="iconfont icon-search"></i> <span>搜索</span> </a>
+        </li>
+    </ul>
+</sidebar>
+
+
+<div id="header" class="header">
+    <div class="sjcd" onclick="$.Menu()"><i></i></div>
+    <h1><a href="/abount.html">刀刀博客</a></h1>
+</div>
+<div id="zhezhao" onclick="$.Menu()"></div>
+<div class="bug">
+    <div id="bug">
+        <div id="main" class="main">
+
+            <div class="w3-row">
+                <div class="w3-col l8 ">
+                    <article>
+                        <h3 class="sider_header" style="padding-top: 48px"><strong><a
+                                href="/page/18/front-end-code-style-guide.html"><span
+                                style='color:red'></span>前端代码风格指南</a></strong>
+                        </h3>
+
+                        <div id="post" class="post">
+                            <div class="meta">
+                                <time itemprop="datePublished"
+                                      content="2017-03-07">2017-03-07</time>
+                                <span class="meta-value">
+                                 <a   class="tag-img" style="background-image: url(/images/42de84f70ef147b88bb0f594f23442b9);" href="/tag/10/1.html">HTML5</a>  <a   class="tag-img" style="background-image: url(/images/b1efba35625145c0bfd974288302652a);" href="/tag/11/1.html">CSS3</a>  <a    class="tag-img" style="background-image: url(/images/112475aeb77546749c3d3f8ffc8234c1);"  href="/tag/5/1.html">JavaScript</a>
+                                </span>
+                            </div>
+
+
+                            <div class="content">
+
+                                <div class="index-img" style="margin: 10px 0 20px 0">
+                                    <div class="tutupage">
+
+                                        <div id="img"
+                                             style="display:block;left: 0px;top: 0px;width: 100%;background-size:cover;background-image: url(/images/new-bg-6);">
+                                            <div id="imgtxt"
+                                                 style="color: #FFF;display: block;font-weight:400;text-align: center;white-space: nowrap;overflow: hidden;">
+                                            前端代码风格指南
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            <h2 id="h2-06e4bd7393e94ce7b9a86a6b41904933">HTML</h2><h3 id="h3-semantics"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Semantics</h3><p>HTML5 provides us with lots of semantic elements aimed to describe precisely the content. Make sure you benefit from its rich vocabulary.</p>
+<pre><code class="lang-html">&lt;!-- bad --&gt;
+&lt;div id=&quot;main&quot;&gt;
+  &lt;div class=&quot;article&quot;&gt;
+    &lt;div class=&quot;header&quot;&gt;
+      &lt;h1&gt;Blog post&lt;/h1&gt;
+      &lt;p&gt;Published: &lt;span&gt;21st Feb, 2015&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p&gt;…&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- good --&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Blog post&lt;/h1&gt;
+      &lt;p&gt;Published: &lt;time datetime=&quot;2015-02-21&quot;&gt;21st Feb, 2015&lt;/time&gt;&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;p&gt;…&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+</code></pre>
+<p>Make sure you understand the semantics of the elements you’re using. It’s worse to use a semantic<br>element in a wrong way than staying neutral.</p>
+<pre><code class="lang-html">&lt;!-- bad --&gt;
+&lt;h1&gt;
+  &lt;figure&gt;
+    &lt;img alt=Company src=logo.png&gt;
+  &lt;/figure&gt;
+&lt;/h1&gt;
+
+&lt;!-- good --&gt;
+&lt;h1&gt;
+  &lt;img alt=Company src=logo.png&gt;
+&lt;/h1&gt;
+</code></pre>
+<h3 id="h3-brevity"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Brevity</h3><p>Keep your code terse. Forget about your old XHTML habits.</p>
+<pre><code class="lang-html">&lt;!-- bad --&gt;
+&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=Content-Type content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;title&gt;Contact&lt;/title&gt;
+    &lt;link rel=stylesheet href=style.css type=text/css /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Contact me&lt;/h1&gt;
+    &lt;label&gt;
+      Email address:
+      &lt;input type=email placeholder=you@email.com required=required /&gt;
+    &lt;/label&gt;
+    &lt;script src=main.js type=text/javascript&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- good --&gt;
+&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+  &lt;meta charset=utf-8&gt;
+  &lt;title&gt;Contact&lt;/title&gt;
+  &lt;link rel=stylesheet href=style.css&gt;
+
+  &lt;h1&gt;Contact me&lt;/h1&gt;
+  &lt;label&gt;
+    Email address:
+    &lt;input type=email placeholder=you@email.com required&gt;
+  &lt;/label&gt;
+  &lt;script src=main.js&gt;&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="h3-accessibility"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Accessibility</h3><p>Accessibility shouldn’t be an afterthought. You don’t have to be a WCAG expert to improve your<br>website, you can start immediately by fixing the little things that make a huge difference, such as:</p>
+<ul>
+<li>learning to use the <code>alt</code> attribute properly</li><li>making sure your links and buttons are marked as such (no <code>&lt;div class=button&gt;</code> atrocities)</li><li>not relying exclusively on colors to communicate information</li><li>explicitly labelling form controls</li></ul>
+<pre><code class="lang-html">&lt;!-- bad --&gt;
+&lt;h1&gt;&lt;img alt=&quot;Logo&quot; src=&quot;logo.png&quot;&gt;&lt;/h1&gt;
+
+&lt;!-- good --&gt;
+&lt;h1&gt;&lt;img alt=&quot;My Company, Inc.&quot; src=&quot;logo.png&quot;&gt;&lt;/h1&gt;
+</code></pre>
+<h3 id="h3-language"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Language</h3><p>While defining the language and character encoding is optional, it’s recommended to always declare<br>both at document level, even if they’re specified in your HTTP headers. Favor UTF-8 over any other<br>character encoding.</p>
+<pre><code class="lang-html">&lt;!-- bad --&gt;
+&lt;!doctype html&gt;
+&lt;title&gt;Hello, world.&lt;/title&gt;
+
+&lt;!-- good --&gt;
+&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+  &lt;meta charset=utf-8&gt;
+  &lt;title&gt;Hello, world.&lt;/title&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="h3-performance"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Performance</h3><p>Unless there’s a valid reason for loading your scripts before your content, don’t block the<br>rendering of your page. If your style sheet is heavy, isolate the styles that are absolutely<br>required initially and defer the loading of the secondary declarations in a separate style sheet.<br>Two HTTP requests is significantly slower than one, but the perception of speed is the most<br>important factor.</p>
+<pre><code class="lang-html">&lt;!-- bad --&gt;
+&lt;!doctype html&gt;
+&lt;meta charset=utf-8&gt;
+&lt;script src=analytics.js&gt;&lt;/script&gt;
+&lt;title&gt;Hello, world.&lt;/title&gt;
+&lt;p&gt;...&lt;/p&gt;
+
+&lt;!-- good --&gt;
+&lt;!doctype html&gt;
+&lt;meta charset=utf-8&gt;
+&lt;title&gt;Hello, world.&lt;/title&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;script src=analytics.js&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="h2-91896e116668474e8547c80a9659e38c">CSS</h2><h3 id="h3-semicolons"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Semicolons</h3><p>While the semicolon is technically a separator in CSS, always treat it as a terminator.</p>
+<pre><code class="lang-css">/* bad */
+div {
+  color: red
+}
+
+/* good */
+div {
+  color: red;
+}
+</code></pre>
+<h3 id="h3-box-model"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Box model</h3><p>The box model should ideally be the same for the entire document. A global<br><code>* { box-sizing: border-box; }</code> is fine, but don’t change the default box model<br>on specific elements if you can avoid it.</p>
+<pre><code class="lang-css">/* bad */
+div {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* good */
+div {
+  padding: 10px;
+}
+</code></pre>
+<h3 id="h3-flow"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Flow</h3><p>Don’t change the default behavior of an element if you can avoid it. Keep elements in the<br>natural document flow as much as you can. For example, removing the white-space below an<br>image shouldn’t make you change its default display:</p>
+<pre><code class="lang-css">/* bad */
+img {
+  display: block;
+}
+
+/* good */
+img {
+  vertical-align: middle;
+}
+</code></pre>
+<p>Similarly, don’t take an element off the flow if you can avoid it.</p>
+<pre><code class="lang-css">/* bad */
+div {
+  width: 100px;
+  position: absolute;
+  right: 0;
+}
+
+/* good */
+div {
+  width: 100px;
+  margin-left: auto;
+}
+</code></pre>
+<h3 id="h3-positioning"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Positioning</h3><p>There are many ways to position elements in CSS but try to restrict yourself to the<br>properties/values below. By order of preference:</p>
+<pre><code>display: block;
+display: flex;
+position: relative;
+position: sticky;
+position: absolute;
+position: fixed;
+</code></pre><h3 id="h3-selectors"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Selectors</h3><p>Minimize selectors tightly coupled to the DOM. Consider adding a class to the elements<br>you want to match when your selector exceeds 3 structural pseudo-classes, descendant or<br>sibling combinators.</p>
+<pre><code class="lang-css">/* bad */
+div:first-of-type :last-child &gt; p ~ *
+
+/* good */
+div:first-of-type .info
+</code></pre>
+<p>Avoid overloading your selectors when you don’t need to.</p>
+<pre><code class="lang-css">/* bad */
+img[src$=svg], ul &gt; li:first-child {
+  opacity: 0;
+}
+
+/* good */
+[src$=svg], ul &gt; :first-child {
+  opacity: 0;
+}
+</code></pre>
+<h3 id="h3-specificity"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Specificity</h3><p>Don’t make values and selectors hard to override. Minimize the use of <code>id</code>‘s<br>and avoid <code>!important</code>.</p>
+<pre><code class="lang-css">/* bad */
+.bar {
+  color: green !important;
+}
+.foo {
+  color: red;
+}
+
+/* good */
+.foo.bar {
+  color: green;
+}
+.foo {
+  color: red;
+}
+</code></pre>
+<h3 id="h3-overriding"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Overriding</h3><p>Overriding styles makes selectors and debugging harder. Avoid it when possible.</p>
+<pre><code class="lang-css">/* bad */
+li {
+  visibility: hidden;
+}
+li:first-child {
+  visibility: visible;
+}
+
+/* good */
+li + li {
+  visibility: hidden;
+}
+</code></pre>
+<h3 id="h3-inheritance"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Inheritance</h3><p>Don’t duplicate style declarations that can be inherited.</p>
+<pre><code class="lang-css">/* bad */
+div h1, div p {
+  text-shadow: 0 1px 0 #fff;
+}
+
+/* good */
+div {
+  text-shadow: 0 1px 0 #fff;
+}
+</code></pre>
+<h3 id="h3-brevity"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Brevity</h3><p>Keep your code terse. Use shorthand properties and avoid using multiple properties when<br>it’s not needed.</p>
+<pre><code class="lang-css">/* bad */
+div {
+  transition: all 1s;
+  top: 50%;
+  margin-top: -10px;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+}
+
+/* good */
+div {
+  transition: 1s;
+  top: calc(50% - 10px);
+  padding: 5px 10px 20px;
+}
+</code></pre>
+<h3 id="h3-language"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Language</h3><p>Prefer English over math.</p>
+<pre><code class="lang-css">/* bad */
+:nth-child(2n + 1) {
+  transform: rotate(360deg);
+}
+
+/* good */
+:nth-child(odd) {
+  transform: rotate(1turn);
+}
+</code></pre>
+<h3 id="h3-vendor-prefixes"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Vendor prefixes</h3><p>Kill obsolete vendor prefixes aggressively. If you need to use them, insert them before the<br>standard property.</p>
+<pre><code class="lang-css">/* bad */
+div {
+  transform: scale(2);
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+}
+
+/* good */
+div {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+  transition: 1s;
+}
+</code></pre>
+<h3 id="h3-animations"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Animations</h3><p>Favor transitions over animations. Avoid animating other properties than<br><code>opacity</code> and <code>transform</code>.</p>
+<pre><code class="lang-css">/* bad */
+div:hover {
+  animation: move 1s forwards;
+}
+@keyframes move {
+  100% {
+    margin-left: 100px;
+  }
+}
+
+/* good */
+div:hover {
+  transition: 1s;
+  transform: translateX(100px);
+}
+</code></pre>
+<h3 id="h3-units"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Units</h3><p>Use unitless values when you can. Favor <code>rem</code> if you use relative units. Prefer seconds over<br>milliseconds.</p>
+<pre><code class="lang-css">/* bad */
+div {
+  margin: 0px;
+  font-size: .9em;
+  line-height: 22px;
+  transition: 500ms;
+}
+
+/* good */
+div {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.5;
+  transition: .5s;
+}
+</code></pre>
+<h3 id="h3-colors"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Colors</h3><p>If you need transparency, use <code>rgba</code>. Otherwise, always use the hexadecimal format.</p>
+<pre><code class="lang-css">/* bad */
+div {
+  color: hsl(103, 54%, 43%);
+}
+
+/* good */
+div {
+  color: #5a3;
+}
+</code></pre>
+<h3 id="h3-drawing"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Drawing</h3><p>Avoid HTTP requests when the resources are easily replicable with CSS.</p>
+<pre><code class="lang-css">/* bad */
+div::before {
+  content: url(white-circle.svg);
+}
+
+/* good */
+div::before {
+  content: &quot;&quot;;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+}
+</code></pre>
+<h3 id="h3-hacks"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Hacks</h3><p>Don’t use them.</p>
+<pre><code class="lang-css">/* bad */
+div {
+  // position: relative;
+  transform: translateZ(0);
+}
+
+/* good */
+div {
+  /* position: relative; */
+  will-change: transform;
+}
+</code></pre>
+<h2 id="h2-425ffa6521764563aa84ec3c1ec05267">JavaScript</h2><h3 id="h3-performance"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Performance</h3><p>Favor readability, correctness and expressiveness over performance. JavaScript will basically never<br>be your performance bottleneck. Optimize things like image compression, network access and DOM<br>reflows instead. If you remember just one guideline from this document, choose this one.</p>
+<pre><code class="lang-javascript">// bad (albeit way faster)
+const arr = [1, 2, 3, 4];
+const len = arr.length;
+var i = -1;
+var result = [];
+while (++i &lt; len) {
+  var n = arr[i];
+  if (n % 2 &gt; 0) continue;
+  result.push(n * n);
+}
+
+// good
+const arr = [1, 2, 3, 4];
+const isEven = n =&gt; n % 2 == 0;
+const square = n =&gt; n * n;
+
+const result = arr.filter(isEven).map(square);
+</code></pre>
+<h3 id="h3-statelessness"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Statelessness</h3><p>Try to keep your functions pure. All functions should ideally produce no side-effects, use no outside data and return new objects instead of mutating existing ones.</p>
+<pre><code class="lang-javascript">// bad
+const merge = (target, ...sources) =&gt; Object.assign(target, ...sources);
+merge({ foo: &quot;foo&quot; }, { bar: &quot;bar&quot; }); // =&gt; { foo: &quot;foo&quot;, bar: &quot;bar&quot; }
+
+// good
+const merge = (...sources) =&gt; Object.assign({}, ...sources);
+merge({ foo: &quot;foo&quot; }, { bar: &quot;bar&quot; }); // =&gt; { foo: &quot;foo&quot;, bar: &quot;bar&quot; }
+</code></pre>
+<h3 id="h3-natives"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Natives</h3><p>Rely on native methods as much as possible.</p>
+<pre><code class="lang-javascript">// bad
+const toArray = obj =&gt; [].slice.call(obj);
+
+// good
+const toArray = (() =&gt;
+  Array.from ? Array.from : obj =&gt; [].slice.call(obj)
+)();
+</code></pre>
+<h3 id="h3-coercion"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Coercion</h3><p>Embrace implicit coercion when it makes sense. Avoid it otherwise. Don’t cargo-cult.</p>
+<pre><code class="lang-javascript">// bad
+if (x === undefined || x === null) { ... }
+
+// good
+if (x == undefined) { ... }
+</code></pre>
+<h3 id="h3-loops"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Loops</h3><p>Don’t use loops as they force you to use mutable objects. Rely on <code>array.prototype</code> methods.</p>
+<pre><code class="lang-javascript">// bad
+const sum = arr =&gt; {
+  var sum = 0;
+  var i = -1;
+  for (;arr[++i];) {
+    sum += arr[i];
+  }
+  return sum;
+};
+
+sum([1, 2, 3]); // =&gt; 6
+
+// good
+const sum = arr =&gt;
+  arr.reduce((x, y) =&gt; x + y);
+
+sum([1, 2, 3]); // =&gt; 6
+</code></pre>
+<p>If you can’t, or if using <code>array.prototype</code> methods is arguably abusive, use recursion.</p>
+<pre><code class="lang-javascript">// bad
+const createDivs = howMany =&gt; {
+  while (howMany--) {
+    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;);
+  }
+};
+createDivs(5);
+
+// bad
+const createDivs = howMany =&gt;
+  [...Array(howMany)].forEach(() =&gt;
+    document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;)
+  );
+createDivs(5);
+
+// good
+const createDivs = howMany =&gt; {
+  if (!howMany) return;
+  document.body.insertAdjacentHTML(&quot;beforeend&quot;, &quot;&lt;div&gt;&lt;/div&gt;&quot;);
+  return createDivs(howMany - 1);
+};
+createDivs(5);
+</code></pre>
+<p>Here’s a <a href='https://gist.github.com/bendc/6cb2db4a44ec30208e86' target='_blank'>generic loop function</a> making recursion easier to use.</p>
+<h3 id="h3-arguments"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Arguments</h3><p>Forget about the <code>arguments</code> object. The rest parameter is always a better option because:</p>
+<ol>
+<li>it’s named, so it gives you a better idea of the arguments the function is expecting</li><li>it’s a real array, which makes it easier to use.</li></ol>
+<pre><code class="lang-javascript">// bad
+const sortNumbers = () =&gt;
+  Array.prototype.slice.call(arguments).sort();
+
+// good
+const sortNumbers = (...numbers) =&gt; numbers.sort();
+</code></pre>
+<h3 id="h3-apply"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Apply</h3><p>Forget about <code>apply()</code>. Use the spread operator instead.</p>
+<pre><code class="lang-javascript">const greet = (first, last) =&gt; `Hi ${first} ${last}`;
+const person = [&quot;John&quot;, &quot;Doe&quot;];
+
+// bad
+greet.apply(null, person);
+
+// good
+greet(...person);
+</code></pre>
+<h3 id="h3-bind"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Bind</h3><p>Don’t <code>bind()</code> when there’s a more idiomatic approach.</p>
+<pre><code class="lang-javascript">// bad
+[&quot;foo&quot;, &quot;bar&quot;].forEach(func.bind(this));
+
+// good
+[&quot;foo&quot;, &quot;bar&quot;].forEach(func, this);
+</code></pre>
+<pre><code class="lang-javascript">// bad
+const person = {
+  first: &quot;John&quot;,
+  last: &quot;Doe&quot;,
+  greet() {
+    const full = function() {
+      return `${this.first} ${this.last}`;
+    }.bind(this);
+    return `Hello ${full()}`;
+  }
+}
+
+// good
+const person = {
+  first: &quot;John&quot;,
+  last: &quot;Doe&quot;,
+  greet() {
+    const full = () =&gt; `${this.first} ${this.last}`;
+    return `Hello ${full()}`;
+  }
+}
+</code></pre>
+<h3 id="h3-higher-order-functions"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Higher-order functions</h3><p>Avoid nesting functions when you don’t have to.</p>
+<pre><code class="lang-javascript">// bad
+[1, 2, 3].map(num =&gt; String(num));
+
+// good
+[1, 2, 3].map(String);
+</code></pre>
+<h3 id="h3-composition"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Composition</h3><p>Avoid multiple nested function calls. Use composition instead.</p>
+<pre><code class="lang-javascript">const plus1 = a =&gt; a + 1;
+const mult2 = a =&gt; a * 2;
+
+// bad
+mult2(plus1(5)); // =&gt; 12
+
+// good
+const pipeline = (...funcs) =&gt; val =&gt; funcs.reduce((a, b) =&gt; b(a), val);
+const addThenMult = pipeline(plus1, mult2);
+addThenMult(5); // =&gt; 12
+</code></pre>
+<h3 id="h3-caching"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Caching</h3><p>Cache feature tests, large data structures and any expensive operation.</p>
+<pre><code class="lang-javascript">// bad
+const contains = (arr, value) =&gt;
+  Array.prototype.includes
+    ? arr.includes(value)
+    : arr.some(el =&gt; el === value);
+contains([&quot;foo&quot;, &quot;bar&quot;], &quot;baz&quot;); // =&gt; false
+
+// good
+const contains = (() =&gt;
+  Array.prototype.includes
+    ? (arr, value) =&gt; arr.includes(value)
+    : (arr, value) =&gt; arr.some(el =&gt; el === value)
+)();
+contains([&quot;foo&quot;, &quot;bar&quot;], &quot;baz&quot;); // =&gt; false
+</code></pre>
+<h3 id="h3-variables"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Variables</h3><p>Favor <code>const</code> over <code>let</code> and <code>let</code> over <code>var</code>.</p>
+<pre><code class="lang-javascript">// bad
+var me = new Map();
+me.set(&quot;name&quot;, &quot;Ben&quot;).set(&quot;country&quot;, &quot;Belgium&quot;);
+
+// good
+const me = new Map();
+me.set(&quot;name&quot;, &quot;Ben&quot;).set(&quot;country&quot;, &quot;Belgium&quot;);
+</code></pre>
+<h3 id="h3-conditions"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Conditions</h3><p>Favor IIFE’s and return statements over if, else if, else and switch statements.</p>
+<pre><code class="lang-javascript">// bad
+var grade;
+if (result &lt; 50)
+  grade = &quot;bad&quot;;
+else if (result &lt; 90)
+  grade = &quot;good&quot;;
+else
+  grade = &quot;excellent&quot;;
+
+// good
+const grade = (() =&gt; {
+  if (result &lt; 50)
+    return &quot;bad&quot;;
+  if (result &lt; 90)
+    return &quot;good&quot;;
+  return &quot;excellent&quot;;
+})();
+</code></pre>
+<h3 id="h3-object-iteration"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Object iteration</h3><p>Avoid <code>for...in</code> when you can.</p>
+<pre><code class="lang-javascript">const shared = { foo: &quot;foo&quot; };
+const obj = Object.create(shared, {
+  bar: {
+    value: &quot;bar&quot;,
+    enumerable: true
+  }
+});
+
+// bad
+for (var prop in obj) {
+  if (obj.hasOwnProperty(prop))
+    console.log(prop);
+}
+
+// good
+Object.keys(obj).forEach(prop =&gt; console.log(prop));
+</code></pre>
+<h3 id="h3-objects-as-maps"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Objects as Maps</h3><p>While objects have legitimate use cases, maps are usually a better, more powerful choice. When in<br>doubt, use a <code>Map</code>.</p>
+<pre><code class="lang-javascript">// bad
+const me = {
+  name: &quot;Ben&quot;,
+  age: 30
+};
+var meSize = Object.keys(me).length;
+meSize; // =&gt; 2
+me.country = &quot;Belgium&quot;;
+meSize++;
+meSize; // =&gt; 3
+
+// good
+const me = new Map();
+me.set(&quot;name&quot;, &quot;Ben&quot;);
+me.set(&quot;age&quot;, 30);
+me.size; // =&gt; 2
+me.set(&quot;country&quot;, &quot;Belgium&quot;);
+me.size; // =&gt; 3
+</code></pre>
+<h3 id="h3-curry"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Curry</h3><p>Currying is a powerful but foreign paradigm for many developers. Don’t abuse it as its appropriate<br>use cases are fairly unusual.</p>
+<pre><code class="lang-javascript">// bad
+const sum = a =&gt; b =&gt; a + b;
+sum(5)(3); // =&gt; 8
+
+// good
+const sum = (a, b) =&gt; a + b;
+sum(5, 3); // =&gt; 8
+</code></pre>
+<h3 id="h3-readability"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Readability</h3><p>Don’t obfuscate the intent of your code by using seemingly smart tricks.</p>
+<pre><code class="lang-javascript">// bad
+foo || doSomething();
+
+// good
+if (!foo) doSomething();
+</code></pre>
+<pre><code class="lang-javascript">// bad
+void function() { /* IIFE */ }();
+
+// good
+(function() { /* IIFE */ }());
+</code></pre>
+<pre><code class="lang-javascript">// bad
+const n = ~~3.14;
+
+// good
+const n = Math.floor(3.14);
+</code></pre>
+<h3 id="h3-code-reuse"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Code reuse</h3><p>Don’t be afraid of creating lots of small, highly composable and reusable functions.</p>
+<pre><code class="lang-javascript">// bad
+arr[arr.length - 1];
+
+// good
+const first = arr =&gt; arr[0];
+const last = arr =&gt; first(arr.slice(-1));
+last(arr);
+</code></pre>
+<pre><code class="lang-javascript">// bad
+const product = (a, b) =&gt; a * b;
+const triple = n =&gt; n * 3;
+
+// good
+const product = (a, b) =&gt; a * b;
+const triple = product.bind(null, 3);
+</code></pre>
+<h3 id="h3-dependencies"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Dependencies</h3><p>Minimize dependencies. Third-party is code you don’t know. Don’t load an entire library for just a couple of methods easily replicable:</p>
+<pre><code class="lang-javascript">// bad
+var _ = require(&quot;underscore&quot;);
+_.compact([&quot;foo&quot;, 0]));
+_.unique([&quot;foo&quot;, &quot;foo&quot;]);
+_.union([&quot;foo&quot;], [&quot;bar&quot;], [&quot;foo&quot;]);
+
+// good
+const compact = arr =&gt; arr.filter(el =&gt; el);
+const unique = arr =&gt; [...Set(arr)];
+const union = (...arr) =&gt; unique([].concat(...arr));
+
+compact([&quot;foo&quot;, 0]);
+unique([&quot;foo&quot;, &quot;foo&quot;]);
+union([&quot;foo&quot;], [&quot;bar&quot;], [&quot;foo&quot;]);
+</code></pre>
+
+
+                                <br>
+
+                                Github地址 <a href="https://github.com/bendc/frontend-guidelines"
+                                            target="_blank">bendc/frontend-guidelines</a>
+
+                                <div class="github-widget" data-repo="bendc/frontend-guidelines"></div>
+
+                                <div style="text-align: center;padding-top: 20px;margin-top: 20px;border-top: 1px solid #EEF2F8;">
+                                    <div id="QR" style="display: none;">
+                                        <div id="wechat" style="display: inline-block; padding-right: 7px;">
+                                            <img id="wechat_qr" src="/usr/themes/yodu/images/weixin.png"
+                                                 alt="zhuer0632-656 WeChat Pay">
+
+                                            <p>微信打赏</p></div>
+                                        <div id="alipay" style="display: inline-block; padding-left: 7px;">
+                                            <img id="alipay_qr" src="/usr/themes/yodu/images/alipay.png"
+                                                 alt="zhushaolong@gmail.com Alipay">
+
+                                            <p>支付宝打赏</p></div>
+                                    </div>
+
+                                    <div id="ew" style="display: block;">
+                                        <div id="erweima" style="display: inline-block">
+                                            <div id="qrcode_read"></div>
+                                            <p>扫描二维码，在手机上阅读！</p></div>
+                                    </div>
+                                    <a id="rewardButton" disable="enable"
+                                       onclick="var qr = document.getElementById('QR'); var ds = document.getElementById('ew');if (qr.style.display === 'block'){qr.style.display='none';ds.style.display='block'}else{ds.style.display='none';qr.style.display='block'}"
+                                       class="shangbutton" target="_blank"> 赏 </a></div>
+                            </div>
+
+                            <div class="ad" id="hitokoto"></div>
+                        </div>
+                        <nav class="detailpager">
+
+                            <a class="btn--one fenx" href="/page/19/download-youtube-video.html"
+                               data-tooltip="下载YouTube视频">
+                                <i class="iconfont icon-zuo"></i>
+                            </a>
+
+                            <a class="btn--one fenx nextright"
+                               href="/page/17/graphic-fragmentactivity-life-cycle.html"
+                               data-tooltip="图解Fragment & Activity生命周期">
+                                <i class="iconfont icon-you"></i>
+                            </a>
+                            <div class="page-right fenxiang" id="fenxiang">
+                                <a class="btn--one two" target="_blank"
+                                   href="http://connect.qq.com/widget/shareqq/index.html?url=http://github123.com/page/18/front-end-code-style-guide.html&amp;title=前端代码风格指南&amp;pics="
+                                   data-tooltip="分享至QQ好友"><i class="iconfont icon-qq"></i></a>
+                                <a class="btn--one two" target="_blank"
+                                   href="http://service.weibo.com/share/share.php?url=http://github123.com/page/18/front-end-code-style-guide.html&title=前端代码风格指南&pic="
+                                   data-tooltip="分享至新浪微博"><i class="iconfont icon-weibo"></i></a>
+                            </div>
+                        </nav>
+                        <div id="comments">
+                            <style>
+                                /*邮箱 daodaovps@qq.com*/
+                                #ds-thread #ds-reset a.ds-user-name[data-user-id='9030990']:before {
+                                    content: "万能的";
+                                    margin-right: 8px;
+                                    font-size: 12px;
+                                    color: #FD0000;
+                                    border-radius: 4px
+                                }
+
+                                #ds-thread #ds-reset a.ds-user-name[data-user-id='9030990']:after {
+                                    content: "博主";
+                                    margin-left: 6px;
+                                    font-size: 12px;
+                                    color: #fff;
+                                    background: #66BAB7;
+                                    border-radius: 2px;
+                                    padding: 0 3px;
+                                    box-shadow: 0 0 8px #66BAB0;
+                                    opacity: .8;
+                                    -webkit-animation: my-face 5s infinite ease-in-out;
+                                    animation: my-face 5s infinite ease-in-out;
+                                    display: inline-block;
+                                    margin: 0 5px
+                                }</style>
+
+                            <div class="ds-thread" data-thread-key="18"
+                                 data-title="前端代码风格指南"></div>
+                            <script type="text/javascript">
+                                var duoshuoQuery = {short_name: "github123", theme: "none"};
+                            </script>
+                            <script src="/usr/themes/yodu/duoshuo/duoshuo.min.js"></script>
+                        </div>
+                    </article>
+
+<footer id="footer" class="footer"><br>
+    © 2017&nbsp;由&nbsp;
+    <a target="_blank" href="http://daodaovps.com">刀刀</a> 强力驱动.&nbsp;
+    <br>
+    <div style="display: none;"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a26f7d71bb2663bca2b8ef689c02c53f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script></div>
+
+</footer>
+
+                </div>
+
+                <div class="w3-container w3-col m1 "></div>
+
+                <div class="w3-col l3   w3-padding-48">
+                    <div class="widget">
+                        <h3 class="sider_header"><strong>热门标签</strong></h3>
+                        <ul class="tag-list__itembody taglist--inline multi">
+                        <li>
+ <a href="/tag/1/1.html" class="tag" data-original-title="Android">
+        <span class="name">Android</span>
+        <span class="extra"> | 6</span>
+   </a>
+</li><li>
+ <a href="/tag/3/1.html" class="tag" data-original-title="Java">
+        <span class="name">Java</span>
+        <span class="extra"> | 4</span>
+   </a>
+</li><li>
+ <a href="/tag/5/1.html" class="tag" data-original-title="JavaScript">
+        <span class="name">JavaScript</span>
+        <span class="extra"> | 4</span>
+   </a>
+</li><li>
+ <a href="/tag/6/1.html" class="tag" data-original-title="Python">
+        <span class="name">Python</span>
+        <span class="extra"> | 3</span>
+   </a>
+</li><li>
+ <a href="/tag/11/1.html" class="tag" data-original-title="CSS3">
+        <span class="name">CSS3</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/70/1.html" class="tag" data-original-title="Git">
+        <span class="name">Git</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/75/1.html" class="tag" data-original-title="Node">
+        <span class="name">Node</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/77/1.html" class="tag" data-original-title="Google">
+        <span class="name">Google</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/79/1.html" class="tag" data-original-title="Vue">
+        <span class="name">Vue</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/84/1.html" class="tag" data-original-title="iOS">
+        <span class="name">iOS</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/7/1.html" class="tag" data-original-title="Docker">
+        <span class="name">Docker</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/10/1.html" class="tag" data-original-title="HTML5">
+        <span class="name">HTML5</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/12/1.html" class="tag" data-original-title="jQuery">
+        <span class="name">jQuery</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/27/1.html" class="tag" data-original-title="Shell">
+        <span class="name">Shell</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/34/1.html" class="tag" data-original-title="SpringBoot">
+        <span class="name">SpringBoot</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/67/1.html" class="tag" data-original-title="RPC">
+        <span class="name">RPC</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/76/1.html" class="tag" data-original-title="异步编程">
+        <span class="name">异步编程</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/78/1.html" class="tag" data-original-title="工具类">
+        <span class="name">工具类</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/80/1.html" class="tag" data-original-title="文件上传">
+        <span class="name">文件上传</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/81/1.html" class="tag" data-original-title="ORM">
+        <span class="name">ORM</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h3 class="sider_header"><strong>时间归档</strong></h3>
+                        <ul id="ul_datearchive" class="tag-list__itembody taglist--inline multi">
+                        <li>
+                                <a href="/archive/201703/1.html" class="datearchive">
+                                    <span class="name">2017年03月</span>
+                                    <span class="extra"> | 33</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/usr/themes/yodu/js/jquery.js"></script>
+<script src="/usr/themes/yodu/js/load.js"></script>
+<script src="/usr/themes/yodu/js/jquery.qrcode.js"></script>
+<script src="/usr/themes/yodu/js/qrcode.js"></script>
+<script src="/usr/themes/yodu/js/GithubRepoWidget.min.js"></script>
+
+<script>
+    $(function () {
+        $("#qrcode_read").qrcode(
+                {
+                    width: 132,
+                    height: 132,
+                    render: "canvas",
+                    foreground: "#08add3",
+                    correctLevel: QRErrorCorrectLevel.H,
+                    text: "https://github123.com/page/18/front-end-code-style-guide.html"
+                }
+        );
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="author" content="刀刀,daodaovps@qq.com">
+    <link rel="icon" href="/usr/themes/yodu/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/usr/themes/yodu/images/favicon.ico">
+    <!--[if lt IE 9]>
+    <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a
+            href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <title>签到qiandao -  各大网站自动签到拿积分 | 刀刀博客</title>
+    <link rel="stylesheet" href="/usr/themes/yodu/duoshuo.css" type="text/css">
+    <link rel="stylesheet" href="/usr/themes/yodu/style.css">
+    <link rel="stylesheet" href="/static/css/w3.css">
+
+    <meta name="description"
+          content="binux/qiandao  各大网站自动签到拿积分  ,签到qiandao,sign-in-qiandao , 各大网站自动签到拿积分, 刀刀的个人博客,专注于分享优秀的开源项目."/>
+    <meta name="keywords"
+          content="签到qiandao,sign-in-qiandao , 各大网站自动签到拿积分,   java,daodao,daodaoblog,github,opensource,freecode,开源项目."/>
+
+</head>
+<body id="menu">
+
+<div class="js-search search-form search-form--modal" method="get" role="search">
+    <div class="search-form__inner">
+        <div><p class="micro mb-">输入后按回车搜索 ...</p> <a id="soux" href="https://s.github123.com/search/"><i
+                class="icon-search"></i></a> <input id="keyword" class="text-input" type="text" name="s"
+                                                    autocomplete="off"
+                                                    placeholder="Search" onkeypress="$.getKey();" required="required"/>
+        </div>
+    </div>
+    <div class="search_close" onclick="$.Close()"></div>
+</div>
+
+<sidebar id="sidebar">
+    <div class="tx"><a href="/"><img src="/usr/themes/yodu/images/p1.jpg" alt="刀刀博客"/><span>刀刀博客</span></a></div>
+    <ul class="cd">
+        <li><a href="/" title="主页"> <i class="iconfont icon-quan"></i> <span>主页</span> </a></li>
+        <li><a href="/archives.html" title="归档"> <i class="iconfont icon-openwj"></i> <span>归档</span>
+        </a></li>
+        <li><a href="/tags.html" title="标签"> <i class="iconfont icon-tags"></i> <span>标签</span> </a>
+        </li>
+        <li><a href="/about.html" title="关于"> <i class="iconfont icon-wo"></i> <span>关于</span> </a>
+        </li>
+        <li><a onclick="$.Sousuo()" title="搜索"> <i class="iconfont icon-search"></i> <span>搜索</span> </a>
+        </li>
+    </ul>
+</sidebar>
+
+
+<div id="header" class="header">
+    <div class="sjcd" onclick="$.Menu()"><i></i></div>
+    <h1><a href="/abount.html">刀刀博客</a></h1>
+</div>
+<div id="zhezhao" onclick="$.Menu()"></div>
+<div class="bug">
+    <div id="bug">
+        <div id="main" class="main">
+
+            <div class="w3-row">
+                <div class="w3-col l8 ">
+                    <article>
+                        <h3 class="sider_header" style="padding-top: 48px"><strong><a
+                                href="/page/12/sign-in-qiandao.html"><span
+                                style='color:red'></span>签到qiandao</a></strong>
+                        </h3>
+
+                        <div id="post" class="post">
+                            <div class="meta">
+                                <time itemprop="datePublished"
+                                      content="2017-03-07">2017-03-07</time>
+                                <span class="meta-value">
+                                 <a    class="tag-img" style="background-image: url(/images/a3cc4c4b77e64924842a0e7b142adb10);"  href="/tag/6/1.html">Python</a>
+                                </span>
+                            </div>
+
+
+                            <div class="content">
+
+                                <div class="index-img" style="margin: 10px 0 20px 0">
+                                    <div class="tutupage">
+
+                                        <div id="img"
+                                             style="display:block;left: 0px;top: 0px;width: 100%;background-size:cover;background-image: url(/images/new-bg-3);">
+                                            <div id="imgtxt"
+                                                 style="color: #FFF;display: block;font-weight:400;text-align: center;white-space: nowrap;overflow: hidden;">
+                                            各大网站自动签到拿积分
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            <h2 id="h2-51639ed6ed174c4fb67eaf6f60f13769">qiandao是一个自动签到框架</h2><p>已部署的在线网站是 <a href='https://qiandao.today/' target='_blank'>https://qiandao.today/</a></p>
+<p>原理呢就是chrome插件读取浏览器里的cookie,然后发请求到各网站.<br>获取cookie插件: cookies-get-assistant<br><a href='https://chrome.google.com/webstore/detail/cookies-get-assistant/ljjpkibacifkfolehlgaolibbnlapkme?utm_source=chrome-app-launcher-info-dialog' target='_blank'>https://chrome.google.com/webstore/detail/cookies-get-assistant/ljjpkibacifkfolehlgaolibbnlapkme?utm_source=chrome-app-launcher-info-dialog</a></p>
+<h2 id="h2-c9bbe7f05c8d496c9b0e4439d8861dd4">支持以下网站</h2><p>百度贴吧 - Cookie版<br>网易云音乐<br>什么值得买<br>优酷 - 每日签到赢大礼 (2016-03-13已更新)<br>v2ex<br>字幕组.tv<br>顺丰速运-12.10<br>什么值得买签到<br>bilibili<br>MIUI<br>天使动漫-打工fix<br>xiami音乐-Cookies<br>联通一起沃<br>readcolor 读远 （9.09已更新）- cookie版<br>acfun<br>吾爱破解-Cookie版<br>轻之国度 - cookie版<br>9gal<br>jd<br>huihui<br>网易考拉海购 - kaola.com<br>虾米 - 虾米帐号<br>right<br>贴吧一键签到cookie<br>网易云音乐-电脑 AND 手机<br>福利吧<br>天使动漫-签到fix<br>一加社区<br>banyungong<br>JD金融签到<br>卡饭<br>多玩论坛<br>GFW.press<br>wps<br>U2<br>联通一起沃-会自动送1M红包<br>chiphell<br>线报屋<br>readfree<br>SS同盟<br>百度贴吧一键签到<br>SSNode.co<br>flyme社区<br>睿派克<br>pcwaishe<br>魅族论坛<br>51cto<br>火猫TV(7.28更新)<br>邀请码分享站<br>baofenhour<br>gfw.press<br>18云办公平台12小时签到- www.18bg.com<br>八云论坛 - Cookie版<br>学堂在线<br>合天<br>飞客茶馆<br>搬运工<br>乐视社区<br>360云盘<br>v2bz<br>折800<br>sss.camp<br>书巢-cookie<br>dogespeed<br>蘑菇翻<br>批改网 (Cookies)<br>17k手机版<br>acrossgw<br>Over The Wall<br>风暴SS<br>plam ss<br>baofen<br>天谕 谕票系统签到<br>枫叶动漫<br>杂碎音乐论坛 - fix<br>批改网 (账号密码)<br>有道云笔记签到<br>逆向未来技术社区 - Cookie版<br>P9 签到<br>kindbook<br>bilibili直播-cookie版<br>ShadowProxy<br>dotunnel SS<br>2dkf<br>xwall.link<br>SSCC-Linode93号<br>pt发烧友<br>联想论坛<br>翻墙瘾<br>gate-project<br>cccat<br>普资华企PCCB www.pccb.com<br>Amethyst-SSR<br>vnet.one<br>4nmv<br>wonder.cx<br>斗鱼TV - 自动领取50经验<br>jobbole<br>28推<br>fj10010流量V网</p>
+<h2 id="h2-d2403b5723964471ab16f84fbbb1b233">用户名，密码会泄露吗？</h2><p>为了帮用户发出请求，用户名、密码终究需要被记录的，这只能靠服务器维护者自律。但在存储时，使用每个用户均不相同的密钥加密。通过主程序密钥对用户密钥加密，保证在仅获得数据库是无法解出用户数据。（加密的用户数据包括用户上传的模板，用户为登录设置的变量）<br>如果您依然担心，可以自行搭建系统，下载模板在您自己的服务器上运行签到。</p>
+
+
+                                <br>
+
+                                Github地址 <a href="https://github.com/binux/qiandao"
+                                            target="_blank">binux/qiandao</a>
+
+                                <div class="github-widget" data-repo="binux/qiandao"></div>
+
+                                <div style="text-align: center;padding-top: 20px;margin-top: 20px;border-top: 1px solid #EEF2F8;">
+                                    <div id="QR" style="display: none;">
+                                        <div id="wechat" style="display: inline-block; padding-right: 7px;">
+                                            <img id="wechat_qr" src="/usr/themes/yodu/images/weixin.png"
+                                                 alt="zhuer0632-656 WeChat Pay">
+
+                                            <p>微信打赏</p></div>
+                                        <div id="alipay" style="display: inline-block; padding-left: 7px;">
+                                            <img id="alipay_qr" src="/usr/themes/yodu/images/alipay.png"
+                                                 alt="zhushaolong@gmail.com Alipay">
+
+                                            <p>支付宝打赏</p></div>
+                                    </div>
+
+                                    <div id="ew" style="display: block;">
+                                        <div id="erweima" style="display: inline-block">
+                                            <div id="qrcode_read"></div>
+                                            <p>扫描二维码，在手机上阅读！</p></div>
+                                    </div>
+                                    <a id="rewardButton" disable="enable"
+                                       onclick="var qr = document.getElementById('QR'); var ds = document.getElementById('ew');if (qr.style.display === 'block'){qr.style.display='none';ds.style.display='block'}else{ds.style.display='none';qr.style.display='block'}"
+                                       class="shangbutton" target="_blank"> 赏 </a></div>
+                            </div>
+
+                            <div class="ad" id="hitokoto"></div>
+                        </div>
+                        <nav class="detailpager">
+
+                            <a class="btn--one fenx" href="/page/13/player-ijkplayer.html"
+                               data-tooltip="播放器ijkplayer">
+                                <i class="iconfont icon-zuo"></i>
+                            </a>
+
+                            <a class="btn--one fenx nextright"
+                               href="/page/11/greendao.html"
+                               data-tooltip="greenDAO">
+                                <i class="iconfont icon-you"></i>
+                            </a>
+                            <div class="page-right fenxiang" id="fenxiang">
+                                <a class="btn--one two" target="_blank"
+                                   href="http://connect.qq.com/widget/shareqq/index.html?url=http://github123.com/page/12/sign-in-qiandao.html&amp;title=签到qiandao&amp;pics="
+                                   data-tooltip="分享至QQ好友"><i class="iconfont icon-qq"></i></a>
+                                <a class="btn--one two" target="_blank"
+                                   href="http://service.weibo.com/share/share.php?url=http://github123.com/page/12/sign-in-qiandao.html&title=签到qiandao&pic="
+                                   data-tooltip="分享至新浪微博"><i class="iconfont icon-weibo"></i></a>
+                            </div>
+                        </nav>
+                        <div id="comments">
+                            <style>
+                                /*邮箱 daodaovps@qq.com*/
+                                #ds-thread #ds-reset a.ds-user-name[data-user-id='9030990']:before {
+                                    content: "万能的";
+                                    margin-right: 8px;
+                                    font-size: 12px;
+                                    color: #FD0000;
+                                    border-radius: 4px
+                                }
+
+                                #ds-thread #ds-reset a.ds-user-name[data-user-id='9030990']:after {
+                                    content: "博主";
+                                    margin-left: 6px;
+                                    font-size: 12px;
+                                    color: #fff;
+                                    background: #66BAB7;
+                                    border-radius: 2px;
+                                    padding: 0 3px;
+                                    box-shadow: 0 0 8px #66BAB0;
+                                    opacity: .8;
+                                    -webkit-animation: my-face 5s infinite ease-in-out;
+                                    animation: my-face 5s infinite ease-in-out;
+                                    display: inline-block;
+                                    margin: 0 5px
+                                }</style>
+
+                            <div class="ds-thread" data-thread-key="12"
+                                 data-title="签到qiandao"></div>
+                            <script type="text/javascript">
+                                var duoshuoQuery = {short_name: "github123", theme: "none"};
+                            </script>
+                            <script src="/usr/themes/yodu/duoshuo/duoshuo.min.js"></script>
+                        </div>
+                    </article>
+
+<footer id="footer" class="footer"><br>
+    © 2017&nbsp;由&nbsp;
+    <a target="_blank" href="http://daodaovps.com">刀刀</a> 强力驱动.&nbsp;
+    <br>
+    <div style="display: none;"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a26f7d71bb2663bca2b8ef689c02c53f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script></div>
+
+</footer>
+
+                </div>
+
+                <div class="w3-container w3-col m1 "></div>
+
+                <div class="w3-col l3   w3-padding-48">
+                    <div class="widget">
+                        <h3 class="sider_header"><strong>热门标签</strong></h3>
+                        <ul class="tag-list__itembody taglist--inline multi">
+                        <li>
+ <a href="/tag/1/1.html" class="tag" data-original-title="Android">
+        <span class="name">Android</span>
+        <span class="extra"> | 6</span>
+   </a>
+</li><li>
+ <a href="/tag/3/1.html" class="tag" data-original-title="Java">
+        <span class="name">Java</span>
+        <span class="extra"> | 4</span>
+   </a>
+</li><li>
+ <a href="/tag/5/1.html" class="tag" data-original-title="JavaScript">
+        <span class="name">JavaScript</span>
+        <span class="extra"> | 4</span>
+   </a>
+</li><li>
+ <a href="/tag/6/1.html" class="tag" data-original-title="Python">
+        <span class="name">Python</span>
+        <span class="extra"> | 3</span>
+   </a>
+</li><li>
+ <a href="/tag/11/1.html" class="tag" data-original-title="CSS3">
+        <span class="name">CSS3</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/70/1.html" class="tag" data-original-title="Git">
+        <span class="name">Git</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/75/1.html" class="tag" data-original-title="Node">
+        <span class="name">Node</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/77/1.html" class="tag" data-original-title="Google">
+        <span class="name">Google</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/79/1.html" class="tag" data-original-title="Vue">
+        <span class="name">Vue</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/84/1.html" class="tag" data-original-title="iOS">
+        <span class="name">iOS</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/7/1.html" class="tag" data-original-title="Docker">
+        <span class="name">Docker</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/10/1.html" class="tag" data-original-title="HTML5">
+        <span class="name">HTML5</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/12/1.html" class="tag" data-original-title="jQuery">
+        <span class="name">jQuery</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/27/1.html" class="tag" data-original-title="Shell">
+        <span class="name">Shell</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/34/1.html" class="tag" data-original-title="SpringBoot">
+        <span class="name">SpringBoot</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/67/1.html" class="tag" data-original-title="RPC">
+        <span class="name">RPC</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/76/1.html" class="tag" data-original-title="异步编程">
+        <span class="name">异步编程</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/78/1.html" class="tag" data-original-title="工具类">
+        <span class="name">工具类</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/80/1.html" class="tag" data-original-title="文件上传">
+        <span class="name">文件上传</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/81/1.html" class="tag" data-original-title="ORM">
+        <span class="name">ORM</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h3 class="sider_header"><strong>时间归档</strong></h3>
+                        <ul id="ul_datearchive" class="tag-list__itembody taglist--inline multi">
+                        <li>
+                                <a href="/archive/201703/1.html" class="datearchive">
+                                    <span class="name">2017年03月</span>
+                                    <span class="extra"> | 33</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/usr/themes/yodu/js/jquery.js"></script>
+<script src="/usr/themes/yodu/js/load.js"></script>
+<script src="/usr/themes/yodu/js/jquery.qrcode.js"></script>
+<script src="/usr/themes/yodu/js/qrcode.js"></script>
+<script src="/usr/themes/yodu/js/GithubRepoWidget.min.js"></script>
+
+<script>
+    $(function () {
+        $("#qrcode_read").qrcode(
+                {
+                    width: 132,
+                    height: 132,
+                    render: "canvas",
+                    foreground: "#08add3",
+                    correctLevel: QRErrorCorrectLevel.H,
+                    text: "https://github123.com/page/12/sign-in-qiandao.html"
+                }
+        );
+    });
+</script>
+</body>
+</html>

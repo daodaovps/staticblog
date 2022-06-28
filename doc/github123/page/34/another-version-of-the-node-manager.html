@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="author" content="刀刀,daodaovps@qq.com">
+    <link rel="icon" href="/usr/themes/yodu/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/usr/themes/yodu/images/favicon.ico">
+    <!--[if lt IE 9]>
+    <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a
+            href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <title>又一个node版本管理器 -  又一个node版本管理器 | 刀刀博客</title>
+    <link rel="stylesheet" href="/usr/themes/yodu/duoshuo.css" type="text/css">
+    <link rel="stylesheet" href="/usr/themes/yodu/style.css">
+    <link rel="stylesheet" href="/static/css/w3.css">
+
+    <meta name="description"
+          content="node,又一个node版本管理器,another-version-of-the-node-manager , 又一个node版本管理器, 刀刀的个人博客,专注于分享优秀的开源项目."/>
+    <meta name="keywords"
+          content="又一个node版本管理器,another-version-of-the-node-manager , 又一个node版本管理器,   java,daodao,daodaoblog,github,opensource,freecode,开源项目."/>
+
+</head>
+<body id="menu">
+
+<div class="js-search search-form search-form--modal" method="get" role="search">
+    <div class="search-form__inner">
+        <div><p class="micro mb-">输入后按回车搜索 ...</p> <a id="soux" href="https://s.github123.com/search/"><i
+                class="icon-search"></i></a> <input id="keyword" class="text-input" type="text" name="s"
+                                                    autocomplete="off"
+                                                    placeholder="Search" onkeypress="$.getKey();" required="required"/>
+        </div>
+    </div>
+    <div class="search_close" onclick="$.Close()"></div>
+</div>
+
+<sidebar id="sidebar">
+    <div class="tx"><a href="/"><img src="/usr/themes/yodu/images/p1.jpg" alt="刀刀博客"/><span>刀刀博客</span></a></div>
+    <ul class="cd">
+        <li><a href="/" title="主页"> <i class="iconfont icon-quan"></i> <span>主页</span> </a></li>
+        <li><a href="/archives.html" title="归档"> <i class="iconfont icon-openwj"></i> <span>归档</span>
+        </a></li>
+        <li><a href="/tags.html" title="标签"> <i class="iconfont icon-tags"></i> <span>标签</span> </a>
+        </li>
+        <li><a href="/about.html" title="关于"> <i class="iconfont icon-wo"></i> <span>关于</span> </a>
+        </li>
+        <li><a onclick="$.Sousuo()" title="搜索"> <i class="iconfont icon-search"></i> <span>搜索</span> </a>
+        </li>
+    </ul>
+</sidebar>
+
+
+<div id="header" class="header">
+    <div class="sjcd" onclick="$.Menu()"><i></i></div>
+    <h1><a href="/abount.html">刀刀博客</a></h1>
+</div>
+<div id="zhezhao" onclick="$.Menu()"></div>
+<div class="bug">
+    <div id="bug">
+        <div id="main" class="main">
+
+            <div class="w3-row">
+                <div class="w3-col l8 ">
+                    <article>
+                        <h3 class="sider_header" style="padding-top: 48px"><strong><a
+                                href="/page/34/another-version-of-the-node-manager.html"><span
+                                style='color:red'></span>又一个node版本管理器</a></strong>
+                        </h3>
+
+                        <div id="post" class="post">
+                            <div class="meta">
+                                <time itemprop="datePublished"
+                                      content="2017-03-07">2017-03-07</time>
+                                <span class="meta-value">
+                                 <a   href="/tag/75/1.html">Node</a>  <a     href="/tag/27/1.html">Shell</a>
+                                </span>
+                            </div>
+
+
+                            <div class="content">
+
+                                <div class="index-img" style="margin: 10px 0 20px 0">
+                                    <div class="tutupage">
+
+                                        <div id="img"
+                                             style="display:block;left: 0px;top: 0px;width: 100%;background-size:cover;background-image: url(/images/new-bg-1);">
+                                            <div id="imgtxt"
+                                                 style="color: #FFF;display: block;font-weight:400;text-align: center;white-space: nowrap;overflow: hidden;">
+                                            又一个node版本管理器
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            <h2 id="h2-761b700878364864874d6e993d056ef7">n – Interactively Manage Your Node.js Versions</h2><p><a href='https://gitter.im/tj/n' target='_blank'></a><br><a href='https://www.npmjs.com/package/n' target='_blank'></a><br><a href='https://www.npmjs.com/package/n' target='_blank'></a><br><a href='https://www.npmjs.com/package/n' target='_blank'></a><br><a href='https://www.npmjs.com/package/n' target='_blank'></a></p>
+<p>Node.js version management: no subshells, no profile setup, no convoluted API, just <strong>simple</strong>.</p>
+<h2 id="h2-f4aef9b6433542dda51a2e14e66b6a3a">Want to install Node nightly releases? Try this!</h2><p><img src="http://nimit.io/images/n/n.gif" alt=""></p>
+<p>(Unfortunately <code>n</code> is not supported on Windows yet. If you’re able to make it work, send in a pull request!)</p>
+<h2 id="h2-9cefb28b23b84fa59ea9f621ceafc140">Installation</h2><p>Since you probably already have <code>node</code>, the easiest way to install <code>n</code> is through <code>npm</code>:</p>
+<pre><code>$ npm install -g n
+</code></pre><p>Alternatively, you can clone this repo and</p>
+<pre><code>$ make install
+</code></pre><p>to install <code>n</code> to <code>bin/n</code> of the directory specified in the environment variable <code>$PREFIX</code>, which defaults to <code>/usr/local</code> (note that you will likely need to use <code>sudo</code>). To install <code>n</code> in a custom location (such as <code>$CUSTOM_LOCATION/bin/n</code>), run <code>PREFIX=$CUSTOM_LOCATION make install</code>.</p>
+<p>Once installed, <code>n</code> installs <code>node</code> versions to subdirectory <code>n/versions</code> of the directory specified in environment variable <code>N_PREFIX</code>, which defaults to <code>/usr/local</code>; the <em>active</em> <code>node</code>/<code>iojs</code> version is installed directly in <code>N_PREFIX</code>.<br>To change the default to, say, <code>$HOME</code>, prefix later calls to <code>n</code> with <code>N_PREFIX=$HOME</code> or add <code>export N_PREFIX=$HOME</code> to your shell initialization file.</p>
+<p>Additionally, consider third-party installer <a href='https://github.com/mklement0/n-install' target='_blank'>n-install</a>, which allows installation directly from GitHub; for instance,</p>
+<pre><code>curl -L https://git.io/n-install | bash
+</code></pre><p>sets both <code>PREFIX</code> and <code>N_PREFIX</code> to <code>$HOME/n</code>, installs <code>n</code> to <code>$HOME/n/bin</code>, modifies the initialization files of supported shells to export <code>N_PREFIX</code> and add <code>$HOME/n/bin</code> to the <code>PATH</code>, and installs the latest stable <code>node</code> version.</p>
+<p>As a result, both <code>n</code> itself and all <code>node</code> versions it manages are hosted inside a single, optionally configurable directory, which you can later remove with the included <code>n-uninstall</code> script. <code>n-update</code> updates <code>n</code> itself to the latest version. See the <a href='https://github.com/mklement0/n-install' target='_blank'>n-install repo</a> for more details.</p>
+<h3 id="h3-installing-activating-versions"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Installing/Activating Versions</h3><p>Simply execute <code>n &lt;version&gt;</code> to install a version of <code>node</code>. If <code>&lt;version</code> has already been installed (via <code>n</code>), <code>n</code> will activate that version.</p>
+<pre><code>$ n 0.8.14
+$ n 0.8.17
+$ n 0.9.6
+</code></pre><p>Execute <code>n</code> on its own to view your currently installed versions. Use the up and down arrow keys to navigate and press enter or the right arrow key to select. Use ^C (control + C) to exit the selection screen.</p>
+<pre><code>$ n
+
+  0.8.14
+ο 0.8.17
+  0.9.6
+</code></pre><p>Use or install the latest official release:</p>
+<pre><code>$ n latest
+</code></pre><p>Use or install the stable official release:</p>
+<pre><code>$ n stable
+</code></pre><p>Use or install the latest LTS official release:</p>
+<pre><code>$ n lts
+</code></pre><h3 id="h3-removing-versions"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Removing Versions</h3><p>Remove some versions:</p>
+<pre><code>$ n rm 0.9.4 v0.10.0
+</code></pre><p>Alternatively, you can use <code>-</code> in lieu of <code>rm</code>:</p>
+<pre><code>$ n - 0.9.4
+</code></pre><h3 id="h3-binary-usage"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Binary Usage</h3><p>When running multiple versions of <code>node</code>, we can target<br>them directly by asking <code>n</code> for the binary path:</p>
+<pre><code>$ n bin 0.9.4
+/usr/local/n/versions/0.9.4/bin/node
+</code></pre><p>Or by using a specific version through <code>n</code>‘s <code>use</code> sub-command:</p>
+<pre><code>$ n use 0.9.4 some.js
+</code></pre><p>Flags also work here:</p>
+<pre><code>$ n as 0.9.4 --debug some.js
+</code></pre><h3 id="h3-working-with-code-npm-code-"><a href='' target='_blank'></a><span class="header-link octicon octicon-link"></span>Working with <code>npm</code></h3><p>After switching Node.js versions using <code>n</code>, <code>npm</code> may not work properly. This should fix it (thanks <a href="https://github.com/mikemoser"">&#64;mikemoser</a>!):</p>
+<pre><code class="lang-sh">$ curl -0 -L https://npmjs.com/install.sh | sudo sh
+</code></pre>
+<p><code>sudo</code> may not be required depending on your system configuration.</p>
+<h2 id="h2-550e334f79c8457da74a0d3e4dd65f07">Usage</h2><p>Output can also be obtained from <code>n --help</code>.</p>
+<pre><code>Usage: n [options/env] [COMMAND] [args]
+
+Environments:
+ n [COMMAND] [args]            Uses default env (node)
+ n io [COMMAND]                Sets env as io
+
+Commands:
+
+  n                              Output versions installed
+  n latest                       Install or activate the latest node release
+  n -a x86 latest                As above but force 32 bit architecture
+  n stable                       Install or activate the latest stable node release
+  n lts                          Install or activate the latest LTS node release
+  n &lt;version&gt;                    Install node &lt;version&gt;
+  n use &lt;version&gt; [args ...]     Execute node &lt;version&gt; with [args ...]
+  n bin &lt;version&gt;                Output bin path for &lt;version&gt;
+  n rm &lt;version ...&gt;             Remove the given version(s)
+  n --latest                     Output the latest node version available
+  n --stable                     Output the latest stable node version available
+  n --lts                        Output the latest LTS node version available
+  n ls                           Output the versions of node available
+
+(iojs):
+
+  n io latest                    Install or activate the latest iojs release
+  n io -a x86 latest             As above but force 32 bit architecture
+  n io &lt;version&gt;                 Install iojs &lt;version&gt;
+  n io use &lt;version&gt; [args ...]  Execute iojs &lt;version&gt; with [args ...]
+  n io bin &lt;version&gt;             Output bin path for &lt;version&gt;
+  n io rm &lt;version ...&gt;          Remove the given version(s)
+  n io --latest                  Output the latest iojs version available
+  n io ls                        Output the versions of iojs available
+
+Options:
+
+  -V, --version   Output current version of n
+  -h, --help      Display help information
+  -q, --quiet     Disable curl output (if available)
+  -d, --download  Download only
+  -a, --arch      Override system architecture
+
+Aliases:
+
+  which   bin
+  use     as
+  list    ls
+  -       rm
+</code></pre><h2 id="h2-94b738e1bb2946f8958b537700080315">Custom source</h2><p>If you would like to use a project other than the official Node.js or io.js projects, you can use the special <code>n project [command]</code> which allows you to control the behavior of <code>n</code> using environment variables.</p>
+<p>For example, to grab the latest io.js version but name it “foo” instead,</p>
+<pre><code>  PROJECT_NAME=&quot;foo&quot; PROJECT_URL=&quot;https://iojs.org/dist/&quot; n project latest
+</code></pre><p>Required Variables:</p>
+<ul>
+<li><code>PROJECT_NAME</code>: The name the project will be stored under</li><li><code>PROJECT_URL</code>: The location to download the project from. Note, this must follow the same format as the io.js/Node.js repos</li></ul>
+<p>Optional Variables:</p>
+<ul>
+<li><code>HTTP_USER</code>: The username if the <code>PROJECT_URL</code> is protected by basic authentication</li><li><code>HTTP_PASSWORD</code>: The password if the <code>PROJECT_URL</code> is protected by basic authentication</li><li><code>PROJECT_VERSION_CHECK</code>: Many custom projects keep the same version number as the Node.js release they are based on, and maintain their own separate version in process. This allows you to define a JavaScript variable that will be used to check for the version of the process, for example: <code>process.versions.node</code></li></ul>
+<h2 id="h2-a0583d5d479d44e18fb6b325f4ab2efd">Custom architecture</h2><p>By default <code>n</code> picks the binaries matching your system architecture, e.g. <code>n</code> will download 64 bit binaries for a 64 bit system. You can override this by using the <code>-a</code> or <code>--arch</code> option.</p>
+<p>Download and use latest 32 bit version of <code>node</code>:</p>
+<pre><code>$ n --arch x86 latest
+</code></pre><p>Download and use latest 32 bit version of <code>iojs</code>:</p>
+<pre><code>$ n io --arch x86 latest
+</code></pre><p>Download and use 64 bit LTS version of <code>node</code> for older Mac Intel Core 2 Duo systems (x86 image is no longer available but x64 runs fine):</p>
+<pre><code>$ n --arch x64 lts
+</code></pre><h2 id="h2-644d2cd5eed247989a63e44c650ba667">Additional Details</h2><p><code>n</code> installs versions to <code>/usr/local/n/versions</code> by default. Here, it can see what versions are currently installed and activate previously installed versions accordingly when <code>n &lt;version&gt;</code> is invoked again.</p>
+<p>Activated versions are then installed to the prefix <code>/usr/local</code>, which may be altered via the <strong><code>N_PREFIX</code></strong> environment variable.</p>
+<p>To alter where <code>n</code> operates, simply <code>export N_PREFIX</code>.</p>
+<p><code>n</code> does not work on Windows at the moment. Pull Requests are appreciated.</p>
+<p>If you are searching for the latest version of <code>n</code> below 2.x.x, check out the branch <code>1.x.x</code>.</p>
+<h2 id="h2-66eb93c2e3f341539963f98b5b6c5202">Core Team</h2><ul>
+<li>Nimit Kalra – <a href="https://github.com/qw3rtman"">&#64;qw3rtman</a></li><li>Ted Gaydos – <a href="https://github.com/tedgaydos"">&#64;tedgaydos</a></li><li>Travis Webb – <a href="https://github.com/tjwebb"">&#64;tjwebb</a></li></ul>
+<p>Please Read <a href='https://github.com/tj/n/blob/master/.github/CONTRIBUTING.md' target='_blank'>Contributing Docs</a></p>
+<h2 id="h2-8bc2626539cc4c74afdd245279d7b650">License</h2><p>(The MIT License)</p>
+<p>Copyright (c) 2014 TJ Holowaychuk &lt;tj<a href="https://github.com/vision" title="&#64;vision" class="at-link">@vision</a>-media.ca&gt;</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining<br>a copy of this software and associated documentation files (the<br>‘Software’), to deal in the Software without restriction, including<br>without limitation the rights to use, copy, modify, merge, publish,<br>distribute, sublicense, and/or sell copies of the Software, and to<br>permit persons to whom the Software is furnished to do so, subject to<br>the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be<br>included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND,<br>EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF<br>MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.<br>IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY<br>CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,<br>TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE<br>SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+
+                                <br>
+
+                                Github地址 <a href="https://github.com/tj/n"
+                                            target="_blank">tj/n</a>
+
+                                <div class="github-widget" data-repo="tj/n"></div>
+
+                                <div style="text-align: center;padding-top: 20px;margin-top: 20px;border-top: 1px solid #EEF2F8;">
+                                    <div id="QR" style="display: none;">
+                                        <div id="wechat" style="display: inline-block; padding-right: 7px;">
+                                            <img id="wechat_qr" src="/usr/themes/yodu/images/weixin.png"
+                                                 alt="zhuer0632-656 WeChat Pay">
+
+                                            <p>微信打赏</p></div>
+                                        <div id="alipay" style="display: inline-block; padding-left: 7px;">
+                                            <img id="alipay_qr" src="/usr/themes/yodu/images/alipay.png"
+                                                 alt="zhushaolong@gmail.com Alipay">
+
+                                            <p>支付宝打赏</p></div>
+                                    </div>
+
+                                    <div id="ew" style="display: block;">
+                                        <div id="erweima" style="display: inline-block">
+                                            <div id="qrcode_read"></div>
+                                            <p>扫描二维码，在手机上阅读！</p></div>
+                                    </div>
+                                    <a id="rewardButton" disable="enable"
+                                       onclick="var qr = document.getElementById('QR'); var ds = document.getElementById('ew');if (qr.style.display === 'block'){qr.style.display='none';ds.style.display='block'}else{ds.style.display='none';qr.style.display='block'}"
+                                       class="shangbutton" target="_blank"> 赏 </a></div>
+                            </div>
+
+                            <div class="ad" id="hitokoto"></div>
+                        </div>
+                        <nav class="detailpager">
+
+                            <a class="btn--one fenx" href="/page/35/wechat-alipay-android-integrated-payment-and-payment.html"
+                               data-tooltip="Android集成微信支付和支付宝支付">
+                                <i class="iconfont icon-zuo"></i>
+                            </a>
+
+                            <a class="btn--one fenx nextright"
+                               href="/page/33/node-multi-version-manager.html"
+                               data-tooltip="Node多版本管理器">
+                                <i class="iconfont icon-you"></i>
+                            </a>
+                            <div class="page-right fenxiang" id="fenxiang">
+                                <a class="btn--one two" target="_blank"
+                                   href="http://connect.qq.com/widget/shareqq/index.html?url=http://github123.com/page/34/another-version-of-the-node-manager.html&amp;title=又一个node版本管理器&amp;pics="
+                                   data-tooltip="分享至QQ好友"><i class="iconfont icon-qq"></i></a>
+                                <a class="btn--one two" target="_blank"
+                                   href="http://service.weibo.com/share/share.php?url=http://github123.com/page/34/another-version-of-the-node-manager.html&title=又一个node版本管理器&pic="
+                                   data-tooltip="分享至新浪微博"><i class="iconfont icon-weibo"></i></a>
+                            </div>
+                        </nav>
+                        <div id="comments">
+                            <style>
+                                /*邮箱 daodaovps@qq.com*/
+                                #ds-thread #ds-reset a.ds-user-name[data-user-id='9030990']:before {
+                                    content: "万能的";
+                                    margin-right: 8px;
+                                    font-size: 12px;
+                                    color: #FD0000;
+                                    border-radius: 4px
+                                }
+
+                                #ds-thread #ds-reset a.ds-user-name[data-user-id='9030990']:after {
+                                    content: "博主";
+                                    margin-left: 6px;
+                                    font-size: 12px;
+                                    color: #fff;
+                                    background: #66BAB7;
+                                    border-radius: 2px;
+                                    padding: 0 3px;
+                                    box-shadow: 0 0 8px #66BAB0;
+                                    opacity: .8;
+                                    -webkit-animation: my-face 5s infinite ease-in-out;
+                                    animation: my-face 5s infinite ease-in-out;
+                                    display: inline-block;
+                                    margin: 0 5px
+                                }</style>
+
+                            <div class="ds-thread" data-thread-key="34"
+                                 data-title="又一个node版本管理器"></div>
+                            <script type="text/javascript">
+                                var duoshuoQuery = {short_name: "github123", theme: "none"};
+                            </script>
+                            <script src="/usr/themes/yodu/duoshuo/duoshuo.min.js"></script>
+                        </div>
+                    </article>
+
+<footer id="footer" class="footer"><br>
+    © 2017&nbsp;由&nbsp;
+    <a target="_blank" href="http://daodaovps.com">刀刀</a> 强力驱动.&nbsp;
+    <br>
+    <div style="display: none;"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a26f7d71bb2663bca2b8ef689c02c53f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script></div>
+
+</footer>
+
+                </div>
+
+                <div class="w3-container w3-col m1 "></div>
+
+                <div class="w3-col l3   w3-padding-48">
+                    <div class="widget">
+                        <h3 class="sider_header"><strong>热门标签</strong></h3>
+                        <ul class="tag-list__itembody taglist--inline multi">
+                        <li>
+ <a href="/tag/1/1.html" class="tag" data-original-title="Android">
+        <span class="name">Android</span>
+        <span class="extra"> | 6</span>
+   </a>
+</li><li>
+ <a href="/tag/3/1.html" class="tag" data-original-title="Java">
+        <span class="name">Java</span>
+        <span class="extra"> | 4</span>
+   </a>
+</li><li>
+ <a href="/tag/5/1.html" class="tag" data-original-title="JavaScript">
+        <span class="name">JavaScript</span>
+        <span class="extra"> | 4</span>
+   </a>
+</li><li>
+ <a href="/tag/6/1.html" class="tag" data-original-title="Python">
+        <span class="name">Python</span>
+        <span class="extra"> | 3</span>
+   </a>
+</li><li>
+ <a href="/tag/11/1.html" class="tag" data-original-title="CSS3">
+        <span class="name">CSS3</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/70/1.html" class="tag" data-original-title="Git">
+        <span class="name">Git</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/75/1.html" class="tag" data-original-title="Node">
+        <span class="name">Node</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/77/1.html" class="tag" data-original-title="Google">
+        <span class="name">Google</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/79/1.html" class="tag" data-original-title="Vue">
+        <span class="name">Vue</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/84/1.html" class="tag" data-original-title="iOS">
+        <span class="name">iOS</span>
+        <span class="extra"> | 2</span>
+   </a>
+</li><li>
+ <a href="/tag/7/1.html" class="tag" data-original-title="Docker">
+        <span class="name">Docker</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/10/1.html" class="tag" data-original-title="HTML5">
+        <span class="name">HTML5</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/12/1.html" class="tag" data-original-title="jQuery">
+        <span class="name">jQuery</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/27/1.html" class="tag" data-original-title="Shell">
+        <span class="name">Shell</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/34/1.html" class="tag" data-original-title="SpringBoot">
+        <span class="name">SpringBoot</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/67/1.html" class="tag" data-original-title="RPC">
+        <span class="name">RPC</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/76/1.html" class="tag" data-original-title="异步编程">
+        <span class="name">异步编程</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/78/1.html" class="tag" data-original-title="工具类">
+        <span class="name">工具类</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/80/1.html" class="tag" data-original-title="文件上传">
+        <span class="name">文件上传</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li><li>
+ <a href="/tag/81/1.html" class="tag" data-original-title="ORM">
+        <span class="name">ORM</span>
+        <span class="extra"> | 1</span>
+   </a>
+</li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h3 class="sider_header"><strong>时间归档</strong></h3>
+                        <ul id="ul_datearchive" class="tag-list__itembody taglist--inline multi">
+                        <li>
+                                <a href="/archive/201703/1.html" class="datearchive">
+                                    <span class="name">2017年03月</span>
+                                    <span class="extra"> | 33</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/usr/themes/yodu/js/jquery.js"></script>
+<script src="/usr/themes/yodu/js/load.js"></script>
+<script src="/usr/themes/yodu/js/jquery.qrcode.js"></script>
+<script src="/usr/themes/yodu/js/qrcode.js"></script>
+<script src="/usr/themes/yodu/js/GithubRepoWidget.min.js"></script>
+
+<script>
+    $(function () {
+        $("#qrcode_read").qrcode(
+                {
+                    width: 132,
+                    height: 132,
+                    render: "canvas",
+                    foreground: "#08add3",
+                    correctLevel: QRErrorCorrectLevel.H,
+                    text: "https://github123.com/page/34/another-version-of-the-node-manager.html"
+                }
+        );
+    });
+</script>
+</body>
+</html>

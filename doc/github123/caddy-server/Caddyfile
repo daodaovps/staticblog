@@ -1,0 +1,8 @@
+{
+	debug
+	auto_https off
+}
+:9999 {
+	root *  ../
+	file_server
+}
